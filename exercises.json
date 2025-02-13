@@ -1,0 +1,116 @@
+{
+  "exercises": [
+    {
+      "id": 1,
+      "name": "Приседания",
+      "description": "Классическое упражнение для ног и ягодиц",
+      "muscleGroup": "Ноги",
+      "difficulty": 2
+    },
+    {
+      "id": 2,
+      "name": "Отжимания",
+      "description": "Упражнение для верхней части тела",
+      "muscleGroup": "Грудь, трицепсы",
+      "difficulty": 2
+    },
+    {
+      "id": 3,
+      "name": "Подтягивания",
+      "description": "Упражнение для укрепления спины и рук",
+      "muscleGroup": "Спина, бицепсы",
+      "difficulty": 3
+    },
+    {
+      "id": 4,
+      "name": "Планка",
+      "description": "Статическое упражнение для укрепления корпуса",
+      "muscleGroup": "Пресс, спина",
+      "difficulty": 2
+    },
+    {
+      "id": 5,
+      "name": "Выпады",
+      "description": "Упражнение для ног и баланса",
+      "muscleGroup": "Ноги, ягодицы",
+      "difficulty": 2
+    },
+    {
+      "id": 6,
+      "name": "Жим штанги лежа",
+      "description": "Базовое упражнение для развития груди",
+      "muscleGroup": "Грудь, трицепсы",
+      "difficulty": 3
+    },
+    {
+      "id": 7,
+      "name": "Становая тяга",
+      "description": "Комплексное упражнение для всего тела",
+      "muscleGroup": "Спина, ноги",
+      "difficulty": 3
+    },
+    {
+      "id": 8,
+      "name": "Скручивания",
+      "description": "Упражнение для укрепления пресса",
+      "muscleGroup": "Пресс",
+      "difficulty": 1
+    },
+    {
+      "id": 9,
+      "name": "Подъем гантелей на бицепс",
+      "description": "Изолированное упражнение для бицепсов",
+      "muscleGroup": "Бицепсы",
+      "difficulty": 1
+    },
+    {
+      "id": 10,
+      "name": "Разведение рук с гантелями",
+      "description": "Упражнение для развития грудных мышц",
+      "muscleGroup": "Грудь",
+      "difficulty": 2
+    },
+    {
+      "id": 11,
+      "name": "Тяга штанги в наклоне",
+      "description": "Упражнение для укрепления спины",
+      "muscleGroup": "Спина",
+      "difficulty": 2
+    },
+    {
+      "id": 12,
+      "name": "Жим гантелей над головой",
+      "description": "Упражнение для развития плеч",
+      "muscleGroup": "Плечи",
+      "difficulty": 2
+    },
+    {
+      "id": 13,
+      "name": "Французский жим",
+      "description": "Изолированное упражнение для трицепсов",
+      "muscleGroup": "Трицепсы",
+      "difficulty": 2
+    },
+    {
+      "id": 14,
+      "name": "Подъемы на носки",
+      "description": "Упражнение для икроножных мышц",
+      "muscleGroup": "Икры",
+      "difficulty": 1
+    },
+    {
+      "id": 15,
+      "name": "Гиперэкстензия",
+      "description": "Упражнение для укрепления нижней части спины",
+      "muscleGroup": "Спина",
+      "difficulty": 2
+    },
+    {
+      "id": 16,
+      "name": "lorem ipsumasdafdsafdasfsafasfasfsdfsfsfsafsfFSAFASFAF fafasf",
+      "description": "Упражнение для укрепления нижней части спины",
+      "muscleGroup": "Спина",
+      "difficulty": 2
+    }
+  ]
+}
