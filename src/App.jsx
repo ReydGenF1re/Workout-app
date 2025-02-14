@@ -9,29 +9,30 @@ import AppLayout from "./ui/AppLayout.jsx";
 import Exercise, {exerciseLoader} from "./features/exercise_catalog/Exercise.jsx";
 import Error from "./ui/Error.jsx";
 import Loader from "./ui/Loader.jsx";
+import {Toaster} from "react-hot-toast";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Home/>,
-        errorElement: <Error />,
+        errorElement: <Error/>,
 
     },
     {
         element: <AppLayout/>,
-        children:[
+        children: [
             {
                 path: "/exercises",
                 element: <ExercisesCatalog/>,
                 loader: loadExercises,
-                errorElement: <Error />,
+                errorElement: <Error/>,
 
             },
             {
                 path: "/exercise/:exerciseId",
                 loader: exerciseLoader,
                 element: <Exercise/>,
-                errorElement: <Error />,
+                errorElement: <Error/>,
             },
             {
                 path: "/builder",
@@ -52,7 +53,26 @@ const router = createBrowserRouter([
 const App = () => {
 
     return (
-        <RouterProvider router={router} fallbackElement={<Loader />}/>
+        <>
+            <Toaster position={'top-center'}
+                     gutter={12}
+                     containerStyle={{margin: "8px"}}
+                     toastOptions={{
+                         success: {
+                             duration: 3000,
+                         },
+                         error: {
+                             duration: 3000,
+                         },
+                         style: {
+                             fontSize: '16px',
+                             maxWidth: '500px',
+                             padding: '16px 24px'
+                         }
+                     }}/>
+            <RouterProvider router={router} fallbackElement={<Loader/>}/>
+
+        </>
     );
 };
 

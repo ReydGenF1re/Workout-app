@@ -3,114 +3,136 @@
     {
       "id": 1,
       "name": "Приседания",
-      "description": "Классическое упражнение для ног и ягодиц",
-      "muscleGroup": "Ноги",
-      "difficulty": 2
+      "description": "Классическое упражнение для ног и ягодиц. Встаньте прямо, ноги на ширине плеч. Опуститесь, сгибая колени, как будто садитесь на стул, затем вернитесь в исходное положение.",
+      "muscleGroup": ["Ноги", "Ягодицы"],
+      "difficulty": 2,
+      "equipment": ["Не требуется"],
+      "image": "/images/squats.jpg"
     },
     {
       "id": 2,
       "name": "Отжимания",
-      "description": "Упражнение для верхней части тела",
-      "muscleGroup": "Грудь, трицепсы",
-      "difficulty": 2
+      "description": "Упражнение для верхней части тела. Примите упор лежа, руки на ширине плеч. Опустите тело, сгибая локти, пока грудь почти не коснется пола, затем оттолкнитесь обратно вверх.",
+      "muscleGroup": ["Грудь", "Трицепсы", "Плечи"],
+      "difficulty": 2,
+      "equipment": ["Коврик (опционально)"],
+      "image": "https://cdn.qwenlm.ai/output/88518e8f-c33f-4738-aee0-9720f39e2894/t2i/878a256b-99fd-496d-a939-03a2c7cab07a/da333283-c64f-4ce7-a133-04c8a8f0953d.png"
     },
     {
       "id": 3,
       "name": "Подтягивания",
-      "description": "Упражнение для укрепления спины и рук",
-      "muscleGroup": "Спина, бицепсы",
-      "difficulty": 3
+      "description": "Упражнение для укрепления спины и рук. Повисните на перекладине, ладони от себя. Подтяните тело вверх, пока подбородок не окажется над перекладиной, затем медленно опуститесь.",
+      "muscleGroup": ["Спина", "Бицепсы", "Плечи"],
+      "difficulty": 3,
+      "equipment": ["Турник"],
+      "image": "https://images.techinsider.ru/upload/img_cache/eb0/eb016c03bc80f92f1d8b5cb8f703ceb6_ce_1620x1080x156x0.jpg"
     },
     {
       "id": 4,
       "name": "Планка",
-      "description": "Статическое упражнение для укрепления корпуса",
-      "muscleGroup": "Пресс, спина",
-      "difficulty": 2
+      "description": "Статическое упражнение для укрепления корпуса. Примите положение упора лежа на локтях, тело прямое. Удерживайте эту позицию, напрягая мышцы живота и спины.",
+      "muscleGroup": ["Пресс", "Спина", "Плечи"],
+      "difficulty": 2,
+      "equipment": ["Коврик"],
+      "image": "https://atlet-sport.com/image/cache/catalog/stati/planka/uzkaja-800x600.jpg"
     },
     {
       "id": 5,
       "name": "Выпады",
-      "description": "Упражнение для ног и баланса",
-      "muscleGroup": "Ноги, ягодицы",
-      "difficulty": 2
+      "description": "Упражнение для ног и баланса. Сделайте большой шаг вперед, опустите заднее колено почти до пола, затем вернитесь в исходное положение. Чередуйте ноги.",
+      "muscleGroup": ["Ноги", "Ягодицы"],
+      "difficulty": 2,
+      "equipment": ["Не требуется", "Гантели (опционально)"],
+      "image": "https://s0.rbk.ru/v6_top_pics/resized/1440xH/media/img/9/62/346926124307629.jpeg"
     },
     {
       "id": 6,
       "name": "Жим штанги лежа",
-      "description": "Базовое упражнение для развития груди",
-      "muscleGroup": "Грудь, трицепсы",
-      "difficulty": 3
+      "description": "Базовое упражнение для развития груди. Лежа на скамье, опустите штангу к груди, затем выжмите ее вверх до полного выпрямления рук.",
+      "muscleGroup": ["Грудь", "Трицепсы", "Плечи"],
+      "difficulty": 3,
+      "equipment": ["Штанга", "Скамья"],
+      "image": "https://img.championat.com/news/big/h/t/kak-delat-bazovye-uprazhneniya_16347315481754768832.jpg"
     },
     {
       "id": 7,
       "name": "Становая тяга",
-      "description": "Комплексное упражнение для всего тела",
-      "muscleGroup": "Спина, ноги",
-      "difficulty": 3
+      "description": "Комплексное упражнение для всего тела. Наклонитесь и возьмите штангу, выпрямляя ноги и спину, поднимите штангу до уровня бедер, затем опустите обратно на пол.",
+      "muscleGroup": ["Спина", "Ноги", "Ягодицы"],
+      "difficulty": 3,
+      "equipment": ["Штанга"],
+      "image": "https://musclefit.info/wp-content/uploads/2020/04/stanovaya-tyaga-sumo-min.jpg"
     },
     {
       "id": 8,
       "name": "Скручивания",
-      "description": "Упражнение для укрепления пресса",
-      "muscleGroup": "Пресс",
-      "difficulty": 1
+      "description": "Упражнение для укрепления пресса. Лежа на спине, согните колени, руки за головой. Поднимите верхнюю часть тела, скручивая торс, затем опуститесь обратно.",
+      "muscleGroup": ["Пресс"],
+      "difficulty": 1,
+      "equipment": ["Коврик"],
+      "image": "https://power-body.ru/wp-content/uploads/2017/04/skruchivaniya-1.jpg"
     },
     {
       "id": 9,
       "name": "Подъем гантелей на бицепс",
-      "description": "Изолированное упражнение для бицепсов",
-      "muscleGroup": "Бицепсы",
-      "difficulty": 1
+      "description": "Изолированное упражнение для бицепсов. Стоя, держите гантели в опущенных руках. Поочередно сгибайте руки, поднимая гантели к плечам, затем опускайте.",
+      "muscleGroup": ["Бицепсы"],
+      "difficulty": 1,
+      "equipment": ["Гантели"],
+      "image": "https://sportmenu.com/uploads/store/Texts/Text543/cc391f.jpg"
     },
     {
       "id": 10,
       "name": "Разведение рук с гантелями",
-      "description": "Упражнение для развития грудных мышц",
-      "muscleGroup": "Грудь",
-      "difficulty": 2
+      "description": "Упражнение для развития грудных мышц. Лежа на скамье, поднимите гантели над грудью. Разведите руки в стороны, опуская гантели до уровня груди, затем сведите обратно.",
+      "muscleGroup": ["Грудь"],
+      "difficulty": 2,
+      "equipment": ["Гантели", "Скамья"],
+      "image": "https://atletiq.com/content/exercises/738/img_male_1.jpg"
     },
     {
       "id": 11,
       "name": "Тяга штанги в наклоне",
-      "description": "Упражнение для укрепления спины",
-      "muscleGroup": "Спина",
-      "difficulty": 2
+      "description": "Упражнение для укрепления спины. Наклонитесь вперед, держа штангу в вытянутых руках. Подтяните штангу к животу, сводя лопатки, затем опустите.",
+      "muscleGroup": ["Спина"],
+      "difficulty": 2,
+      "equipment": ["Штанга"],
+      "image": "https://musclefit.info/wp-content/uploads/2020/05/tyaga-shtangi-v-naklone.jpg"
     },
     {
       "id": 12,
       "name": "Жим гантелей над головой",
-      "description": "Упражнение для развития плеч",
-      "muscleGroup": "Плечи",
-      "difficulty": 2
+      "description": "Упражнение для развития плеч. Стоя, поднимите гантели на уровень плеч. Выжмите их вверх над головой, полностью выпрямляя руки, затем опустите обратно.",
+      "muscleGroup": ["Плечи"],
+      "difficulty": 2,
+      "equipment": ["Гантели"],
+      "image": "https://kotsport.ru/wp-content/uploads/2023/12/zhim-arnolda-stoia-14-1.webp"
     },
     {
       "id": 13,
       "name": "Французский жим",
-      "description": "Изолированное упражнение для трицепсов",
-      "muscleGroup": "Трицепсы",
-      "difficulty": 2
+      "description": "Изолированное упражнение для трицепсов. Лежа на скамье, держите гантель над головой. Согните локти, опуская гантель за голову, затем выпрямите руки.",
+      "muscleGroup": ["Трицепсы"],
+      "difficulty": 2,
+      "equipment": ["Гантель", "Скамья"],
+      "image": "https://s0.rbk.ru/v6_top_pics/media/img/1/61/346981746361611.jpeg"
     },
     {
       "id": 14,
       "name": "Подъемы на носки",
-      "description": "Упражнение для икроножных мышц",
-      "muscleGroup": "Икры",
-      "difficulty": 1
+      "description": "Упражнение для икроножных мышц. Встаньте на край степ-платформы, пятки свисают. Поднимитесь на носки как можно выше, затем опуститесь, растягивая икры.",
+      "muscleGroup": ["Икры"],
+      "difficulty": 1,
+      "equipment": ["Степ-платформа или ступенька", "Штанга", "Гантели"],
+      "image": "https://images.mentoday.ru/upload/img_cache/f7f/f7f49bf217d7bec290743cbb677c63ae_cropped_620x354.jpeg"
     },
     {
       "id": 15,
       "name": "Гиперэкстензия",
-      "description": "Упражнение для укрепления нижней части спины",
-      "muscleGroup": "Спина",
-      "difficulty": 2
-    },
-    {
-      "id": 16,
-      "name": "lorem ipsumasdafdsafdasfsafasfasfsdfsfsfsafsfFSAFASFAF fafasf",
-      "description": "Упражнение для укрепления нижней части спины",
-      "muscleGroup": "Спина",
-      "difficulty": 2
+      "description": "Упражнение для укрепления нижней части спины. Лежа на специальной скамье, зафиксируйте ноги. Опустите верхнюю часть тела вниз, затем поднимите до уровня тела.",
+      "muscleGroup": ["Спина"],
+      "difficulty": 2,
+      "equipment": ["Скамья для гиперэкстензии"],
+      "image": "https://cross.expert/wp-content/uploads/2016/12/giperekstenziya.jpg"
     }
-  ]
-}
+  ]}

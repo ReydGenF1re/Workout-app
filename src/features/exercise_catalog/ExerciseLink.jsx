@@ -21,9 +21,9 @@ const ExerciseLink = ({exercise}) => {
             difficulty = 'Неизвестно';
     }
     return (
-        <NavLink to={`/exercise/:${exercise.id}`} className={'p-5 border-2 border-white rounded-lg text-xl gap-4 flex justify-between items-center'}>
+        <NavLink to={`/exercise/:${exercise.id}`} className={'p-5 border-2 border-gray-500 rounded-lg text-lg gap-4 flex justify-between items-center'}>
             <span className={'break-all'}>{exercise.name}</span>
-            <span className={`${difficultyColor} p-2 rounded-md`}>{difficulty}</span>
+            <span className={`${difficultyColor} p-2 rounded-md w-[100px] text-center`}>{difficulty}</span>
         </NavLink>
     );
 };
