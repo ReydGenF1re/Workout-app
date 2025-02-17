@@ -1,8 +1,10 @@
 @import "tailwindcss";
+
 body{
     font-family: "Montserrat", serif;
     font-optical-sizing: auto;
-    color:#444;
+    color:white;
+
 }
 .nav-link {
     position: relative;
@@ -16,12 +18,15 @@ body{
     height: 2px;
     bottom: -2px;
     left: 0;
-    background-color: currentColor;
+    background-color: oklch(0.667 0.295 322.15);
     transition: width 0.3s ease;
 }
 
 .nav-link:hover::after {
     width: 100%;
+}
+.nav-link.active{
+    color:oklch(0.667 0.295 322.15);
 }
 /* Thanks to https://cssloaders.github.io/*/
 .loader {
@@ -56,3 +61,4 @@ body{
     50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
     75%, 100%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
 }
+

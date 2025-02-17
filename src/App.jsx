@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Home from "./ui/Home.jsx";
 import ExercisesCatalog, {loadExercises} from "./features/exercise_catalog/ExercisesCatalog.jsx";
@@ -10,6 +10,9 @@ import Exercise, {exerciseLoader} from "./features/exercise_catalog/Exercise.jsx
 import Error from "./ui/Error.jsx";
 import Loader from "./ui/Loader.jsx";
 import {Toaster} from "react-hot-toast";
+import {setAllWorkouts, setExercises} from "./features/builder/builderSlice.js";
+import {useDispatch} from "react-redux";
+import {predefinedWorkouts} from "./services/apiExercises.js";
 
 const router = createBrowserRouter([
     {
@@ -51,7 +54,20 @@ const router = createBrowserRouter([
 
 ])
 const App = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        const storedExercises = JSON.parse(localStorage.getItem('exercises'));
+        if (storedExercises) {
+            dispatch(setExercises(storedExercises.exercises));
+        }
 
+        let storedWorkouts = JSON.parse(localStorage.getItem('workouts')) || [];
+        if (storedWorkouts.length === 0) {
+            storedWorkouts = predefinedWorkouts;
+            localStorage.setItem('workouts', JSON.stringify(storedWorkouts));
+        }
+        dispatch(setAllWorkouts(storedWorkouts));
+    }, [dispatch]);
     return (
         <>
             <Toaster position={'top-center'}

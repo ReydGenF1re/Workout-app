@@ -3,6 +3,7 @@ import { getExercise } from "../../services/apiExercises.js";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import EditExerciseForm from './EditExerciseForm';
 import toast from "react-hot-toast";
+import Button from "../../ui/Button.jsx";
 
 export async function exerciseLoader({params}){
     return await getExercise(params.exerciseId);
@@ -75,18 +76,18 @@ const Exercise = () => {
                 </ul>
             </div>
             <div className="mt-6 flex justify-between">
-                <button
-                    onClick={handleEditClick}
-                    className="p-2 bg-yellow-500 text-white rounded"
+                <Button
+                    fn={handleEditClick}
+                    bgColor="bg-linear-to-r from-cyan-500 to-blue-500"
                 >
                     Редактировать
-                </button>
-                <button
-                    onClick={handleDelete}
-                    className="p-2 bg-red-500 text-white rounded"
+                </Button>
+                <Button
+                    fn={handleDelete}
+                    bgColor="bg-linear-65 from-purple-500 to-pink-500"
                 >
                     Удалить
-                </button>
+                </Button>
             </div>
 
         </div>

@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Button = ({fn, color, children}) => {
+const Button = ({fn, color, bgColor, children}) => {
     return (
         <button
             onClick={fn}
-            className={`bg-${color}-500 hover:bg-${color}-600 hover:translate-y-[1px] transition-all text-white px-2 py-1 rounded`}
+            className={`${bgColor ? ' hover:translate-y-[1px]' : '' } ${color} ${bgColor}  cursor-pointer transition-all   px-2 my-2 py-1 rounded text-lg font-semibold`}
         >
             {children}
         </button>

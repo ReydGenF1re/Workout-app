@@ -7,7 +7,8 @@
       "muscleGroup": ["Ноги", "Ягодицы"],
       "difficulty": 2,
       "equipment": ["Не требуется"],
-      "image": "/images/squats.jpg"
+      "image": "/images/squats.jpg",
+      "type": "reps"
     },
     {
       "id": 2,
@@ -15,8 +16,9 @@
       "description": "Упражнение для верхней части тела. Примите упор лежа, руки на ширине плеч. Опустите тело, сгибая локти, пока грудь почти не коснется пола, затем оттолкнитесь обратно вверх.",
       "muscleGroup": ["Грудь", "Трицепсы", "Плечи"],
       "difficulty": 2,
-      "equipment": ["Коврик (опционально)"],
-      "image": "https://cdn.qwenlm.ai/output/88518e8f-c33f-4738-aee0-9720f39e2894/t2i/878a256b-99fd-496d-a939-03a2c7cab07a/da333283-c64f-4ce7-a133-04c8a8f0953d.png"
+      "equipment": ["Коврик"],
+      "image": "https://cdn.qwenlm.ai/output/88518e8f-c33f-4738-aee0-9720f39e2894/t2i/878a256b-99fd-496d-a939-03a2c7cab07a/da333283-c64f-4ce7-a133-04c8a8f0953d.png",
+      "type": "reps"
     },
     {
       "id": 3,
@@ -25,7 +27,8 @@
       "muscleGroup": ["Спина", "Бицепсы", "Плечи"],
       "difficulty": 3,
       "equipment": ["Турник"],
-      "image": "https://images.techinsider.ru/upload/img_cache/eb0/eb016c03bc80f92f1d8b5cb8f703ceb6_ce_1620x1080x156x0.jpg"
+      "image": "https://images.techinsider.ru/upload/img_cache/eb0/eb016c03bc80f92f1d8b5cb8f703ceb6_ce_1620x1080x156x0.jpg",
+      "type": "reps"
     },
     {
       "id": 4,
@@ -34,7 +37,8 @@
       "muscleGroup": ["Пресс", "Спина", "Плечи"],
       "difficulty": 2,
       "equipment": ["Коврик"],
-      "image": "https://atlet-sport.com/image/cache/catalog/stati/planka/uzkaja-800x600.jpg"
+      "image": "https://atlet-sport.com/image/cache/catalog/stati/planka/uzkaja-800x600.jpg",
+      "type": "time"
     },
     {
       "id": 5,
@@ -42,8 +46,9 @@
       "description": "Упражнение для ног и баланса. Сделайте большой шаг вперед, опустите заднее колено почти до пола, затем вернитесь в исходное положение. Чередуйте ноги.",
       "muscleGroup": ["Ноги", "Ягодицы"],
       "difficulty": 2,
-      "equipment": ["Не требуется", "Гантели (опционально)"],
-      "image": "https://s0.rbk.ru/v6_top_pics/resized/1440xH/media/img/9/62/346926124307629.jpeg"
+      "equipment": ["Гантели"],
+      "image": "https://s0.rbk.ru/v6_top_pics/resized/1440xH/media/img/9/62/346926124307629.jpeg",
+      "type": "reps"
     },
     {
       "id": 6,
@@ -52,7 +57,8 @@
       "muscleGroup": ["Грудь", "Трицепсы", "Плечи"],
       "difficulty": 3,
       "equipment": ["Штанга", "Скамья"],
-      "image": "https://img.championat.com/news/big/h/t/kak-delat-bazovye-uprazhneniya_16347315481754768832.jpg"
+      "image": "https://img.championat.com/news/big/h/t/kak-delat-bazovye-uprazhneniya_16347315481754768832.jpg",
+      "type": "weight"
     },
     {
       "id": 7,
@@ -61,7 +67,8 @@
       "muscleGroup": ["Спина", "Ноги", "Ягодицы"],
       "difficulty": 3,
       "equipment": ["Штанга"],
-      "image": "https://musclefit.info/wp-content/uploads/2020/04/stanovaya-tyaga-sumo-min.jpg"
+      "image": "https://musclefit.info/wp-content/uploads/2020/04/stanovaya-tyaga-sumo-min.jpg",
+      "type": "weight"
     },
     {
       "id": 8,
@@ -70,7 +77,8 @@
       "muscleGroup": ["Пресс"],
       "difficulty": 1,
       "equipment": ["Коврик"],
-      "image": "https://power-body.ru/wp-content/uploads/2017/04/skruchivaniya-1.jpg"
+      "image": "https://power-body.ru/wp-content/uploads/2017/04/skruchivaniya-1.jpg",
+      "type": "reps"
     },
     {
       "id": 9,
@@ -79,7 +87,8 @@
       "muscleGroup": ["Бицепсы"],
       "difficulty": 1,
       "equipment": ["Гантели"],
-      "image": "https://sportmenu.com/uploads/store/Texts/Text543/cc391f.jpg"
+      "image": "https://sportmenu.com/uploads/store/Texts/Text543/cc391f.jpg",
+      "type": "weight"
     },
     {
       "id": 10,
@@ -88,7 +97,8 @@
       "muscleGroup": ["Грудь"],
       "difficulty": 2,
       "equipment": ["Гантели", "Скамья"],
-      "image": "https://atletiq.com/content/exercises/738/img_male_1.jpg"
+      "image": "https://atletiq.com/content/exercises/738/img_male_1.jpg",
+      "type": "weight"
     },
     {
       "id": 11,
@@ -97,7 +107,8 @@
       "muscleGroup": ["Спина"],
       "difficulty": 2,
       "equipment": ["Штанга"],
-      "image": "https://musclefit.info/wp-content/uploads/2020/05/tyaga-shtangi-v-naklone.jpg"
+      "image": "https://musclefit.info/wp-content/uploads/2020/05/tyaga-shtangi-v-naklone.jpg",
+      "type": "weight"
     },
     {
       "id": 12,
@@ -106,7 +117,8 @@
       "muscleGroup": ["Плечи"],
       "difficulty": 2,
       "equipment": ["Гантели"],
-      "image": "https://kotsport.ru/wp-content/uploads/2023/12/zhim-arnolda-stoia-14-1.webp"
+      "image": "https://kotsport.ru/wp-content/uploads/2023/12/zhim-arnolda-stoia-14-1.webp",
+      "type": "weight"
     },
     {
       "id": 13,
@@ -115,7 +127,8 @@
       "muscleGroup": ["Трицепсы"],
       "difficulty": 2,
       "equipment": ["Гантель", "Скамья"],
-      "image": "https://s0.rbk.ru/v6_top_pics/media/img/1/61/346981746361611.jpeg"
+      "image": "https://s0.rbk.ru/v6_top_pics/media/img/1/61/346981746361611.jpeg",
+      "type": "weight"
     },
     {
       "id": 14,
@@ -124,7 +137,8 @@
       "muscleGroup": ["Икры"],
       "difficulty": 1,
       "equipment": ["Степ-платформа или ступенька", "Штанга", "Гантели"],
-      "image": "https://images.mentoday.ru/upload/img_cache/f7f/f7f49bf217d7bec290743cbb677c63ae_cropped_620x354.jpeg"
+      "image": "https://images.mentoday.ru/upload/img_cache/f7f/f7f49bf217d7bec290743cbb677c63ae_cropped_620x354.jpeg",
+      "type": "reps"
     },
     {
       "id": 15,
@@ -133,6 +147,7 @@
       "muscleGroup": ["Спина"],
       "difficulty": 2,
       "equipment": ["Скамья для гиперэкстензии"],
-      "image": "https://cross.expert/wp-content/uploads/2016/12/giperekstenziya.jpg"
+      "image": "https://cross.expert/wp-content/uploads/2016/12/giperekstenziya.jpg",
+      "type": "reps"
     }
   ]}

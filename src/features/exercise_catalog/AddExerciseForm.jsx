@@ -1,23 +1,23 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import GenerateInputs from "../../utils/GenerateInputs.jsx";
+import Button from "../../ui/Button.jsx";
 
 const AddExerciseForm = ({ onAddExercise }) => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
-        data.muscleGroup = data.muscleGroup.split(',').map(item => item.trim());
-        data.equipment = data.equipment.split(',').map(item => item.trim());
+        console.log(data)
         data.difficulty = parseInt(data.difficulty);
         onAddExercise(data);
         reset();
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <GenerateInputs register={register} errors={errors}/>
+        <form onSubmit={handleSubmit(onSubmit)} className="mb-6 space-y-4">
 
-            <button type="submit" className="w-full p-2 bg-blue-500 text-white rounded">Добавить упражнение</button>
+            <GenerateInputs register={register} errors={errors}/>
+            <Button type="submit" bgColor={'bg-linear-65 from-purple-500 to-pink-500'}>Добавить упражнение</Button>
         </form>
     );
 };

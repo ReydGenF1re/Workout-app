@@ -7,21 +7,21 @@ const ExerciseLink = ({exercise}) => {
     switch (exercise.difficulty) {
         case 1:
             difficulty = 'Легко';
-            difficultyColor = 'bg-green-500';
+            difficultyColor = 'text-cyan-500';
             break;
         case 2:
             difficulty = 'Средне';
-            difficultyColor = 'bg-yellow-500';
+            difficultyColor = 'text-violet-500';
             break;
         case 3:
             difficulty = 'Сложно';
-            difficultyColor = 'bg-red-500';
+            difficultyColor = 'text-pink-500';
             break;
         default:
             difficulty = 'Неизвестно';
     }
     return (
-        <NavLink to={`/exercise/:${exercise.id}`} className={'p-5 border-2 border-gray-500 rounded-lg text-lg gap-4 flex justify-between items-center'}>
+        <NavLink to={`/exercise/:${exercise.id}`} className={'p-3 sm:p-5 border-2 border-gray-500 rounded-lg text-md sm:text-lg gap-2 sm:gap-4 flex justify-between items-center'}>
             <span className={'break-all'}>{exercise.name}</span>
             <span className={`${difficultyColor} p-2 rounded-md w-[100px] text-center`}>{difficulty}</span>
         </NavLink>

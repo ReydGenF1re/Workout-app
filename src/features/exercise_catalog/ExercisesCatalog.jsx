@@ -5,6 +5,8 @@ import ExerciseLink from "./ExerciseLink.jsx";
 import ExercisesOperations from "./ExercisesOperations.jsx";
 import AddExerciseForm from "./AddExerciseForm.jsx";
 import toast from "react-hot-toast";
+import Button from "../../ui/Button.jsx";
+import useMuscleGroups from "../../utils/useMuscleGroups.js";
 
 export async function loadExercises(){
     return await getExercises()
@@ -42,17 +44,17 @@ const ExercisesCatalog = () => {
         setShowAddForm(false);
         toast.success('Новое упражнение успешно добавлено');
     };
-
+    const muscleGroups = useMuscleGroups()
     return (
         <div>
-            <div className={'flex justify-between items-center'}>
-                <ExercisesOperations />
-                <button
-                    onClick={() => setShowAddForm(!showAddForm)}
-                    className="mb-4 p-2 bg-green-500 text-white rounded"
+            <div className={'flex justify-between items-center flex-col sm:flex-row mb-6'}>
+                <ExercisesOperations isSelect={true} muscleGroups={muscleGroups}/>
+                <Button
+                    fn={() => setShowAddForm(!showAddForm)}
+                    bgColor={'bg-linear-to-bl from-violet-500 to-fuchsia-500'}
                 >
                     {showAddForm ? 'Скрыть форму' : 'Добавить упражнение'}
-                </button>
+                </Button>
             </div>
 
             {showAddForm && <AddExerciseForm onAddExercise={handleAddExercise} />}
