@@ -21,7 +21,7 @@ const Header = () => {
                     <ul className="flex gap-6 text-xl">
                         <li><NavLink className="nav-link" to="/exercises">Упражнения</NavLink></li>
                         <li><NavLink className="nav-link" to="/builder">Тренировки</NavLink></li>
-                        <li><NavLink className="nav-link" to="/character">Бобрище</NavLink></li>
+                        <li><NavLink className="nav-link" to="/character">Персонаж</NavLink></li>
                     </ul>
                 </nav>
             </div>

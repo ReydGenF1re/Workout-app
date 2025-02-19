@@ -1,15 +1,22 @@
 import React, {useState} from 'react';
 import BuilderForm from "./BuilderForm.jsx";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteWorkout, setWorkoutName} from "./builderSlice.js";
+import {deleteWorkout, setWorkoutName,setCurrentWorkout} from "./builderSlice.js";
 import Button from "../../ui/Button.jsx";
+import {useNavigate} from "react-router-dom";
 
 const WorkoutBuilder = () => {
     const dispatch = useDispatch();
     const allWorkouts = useSelector((state) => state.workout.allWorkouts);
     const [showForm, setShowForm] = useState(false);
     const [previewWorkout, setPreviewWorkout] = useState(null);
+    const currentWorkout = useSelector((state) => state.workout.currentWorkout);
+    const navigate = useNavigate();
 
+    const handleStartWorkout = (workout) => {
+        dispatch(setCurrentWorkout(workout));
+        navigate('/workout');
+    };
     const handlePreviewWorkout = (workout) => {
         setPreviewWorkout(workout);
     };
@@ -64,11 +71,11 @@ const WorkoutBuilder = () => {
                     </ul>
                     <Button
                         fn={() => {
-                            setWorkoutName(previewWorkout.name);
-                            setSelectedExercises(previewWorkout.exercises);
-                            setPreviewWorkout(null);
+                            dispatch(setWorkoutName(previewWorkout.name));
+                            dispatch(setCurrentWorkout(previewWorkout));
+
+                            handleStartWorkout(previewWorkout);
                         }}
-                        // className="mt-4 text-white px-4 py-2 rounded"
                         bgColor={'bg-linear-to-r from-cyan-500 to-blue-500'}
                     >
                         Использовать эту тренировку

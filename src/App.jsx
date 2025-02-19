@@ -48,7 +48,7 @@ const router = createBrowserRouter([
             {
                 path: "/workout",
                 element: <Workout/>
-            }
+            },
         ]
     }
 

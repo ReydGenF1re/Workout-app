@@ -28,27 +28,114 @@ export function addExercise(newExercise) {
 }
 export const predefinedWorkouts = [
     {
-        name: "Тренировка верхней части тела",
-        exercises: [
-            {id: 1, name: "Жим штанги лежа", reps: 12, weight: 60},
-            {id: 2, name: "Подтягивания", reps: 10, weight: 0},
-            {id: 3, name: "Отжимания на брусьях", reps: 15, weight: 0},
-        ]
-    },
-    {
-        name: "Тренировка ног",
-        exercises: [
-            {id: 4, name: "Приседания со штангой", reps: 10, weight: 80},
-            {id: 5, name: "Выпады с гантелями", reps: 12, weight: 20},
-            {id: 6, name: "Становая тяга", reps: 8, weight: 100},
-        ]
-    },
-    {
-        name: "Кардио тренировка",
-        exercises: [
-            {id: 7, name: "Бег на беговой дорожке", time: 600, weight: 0},
-            {id: 8, name: "Прыжки на скакалке", time: 300, weight: 0},
-            {id: 9, name: "Велотренажер", time: 900, weight: 0},
+        "name": "Тренировка нижней части тела",
+        "exercises": [
+            {
+                "id": 4,
+                "name": "Планка",
+                "description": "Статическое упражнение для укрепления корпуса. Примите положение упора лежа на локтях, тело прямое. Удерживайте эту позицию, напрягая мышцы живота и спины.",
+                "muscleGroup": [
+                    "Пресс",
+                    "Спина",
+                    "Плечи"
+                ],
+                "difficulty": 2,
+                "equipment": [
+                    "Коврик"
+                ],
+                "image": "https://atlet-sport.com/image/cache/catalog/stati/planka/uzkaja-800x600.jpg",
+                "type": "time",
+                "reps": null,
+                "time": 60,
+                "weight": null
+            },
+            {
+                "id": 8,
+                "name": "Скручивания",
+                "description": "Упражнение для укрепления пресса. Лежа на спине, согните колени, руки за головой. Поднимите верхнюю часть тела, скручивая торс, затем опуститесь обратно.",
+                "muscleGroup": [
+                    "Пресс"
+                ],
+                "difficulty": 1,
+                "equipment": [
+                    "Коврик"
+                ],
+                "image": "https://power-body.ru/wp-content/uploads/2017/04/skruchivaniya-1.jpg",
+                "type": "reps",
+                "reps": 35,
+                "time": null,
+                "weight": null
+            },
+            {
+                "id": 1,
+                "name": "Приседания",
+                "description": "Классическое упражнение для ног и ягодиц. Встаньте прямо, ноги на ширине плеч. Опуститесь, сгибая колени, как будто садитесь на стул, затем вернитесь в исходное положение.",
+                "muscleGroup": [
+                    "Ноги",
+                    "Ягодицы"
+                ],
+                "difficulty": 2,
+                "equipment": [
+                    "Не требуется"
+                ],
+                "image": "/images/squats.jpg",
+                "type": "reps",
+                "reps": 30,
+                "time": null,
+                "weight": null
+            },
+            {
+                "id": 5,
+                "name": "Выпады",
+                "description": "Упражнение для ног и баланса. Сделайте большой шаг вперед, опустите заднее колено почти до пола, затем вернитесь в исходное положение. Чередуйте ноги.",
+                "muscleGroup": [
+                    "Ноги",
+                    "Ягодицы"
+                ],
+                "difficulty": 2,
+                "equipment": [
+                    "Гантели"
+                ],
+                "image": "https://s0.rbk.ru/v6_top_pics/resized/1440xH/media/img/9/62/346926124307629.jpeg",
+                "type": "reps",
+                "reps": 20,
+                "time": null,
+                "weight": null
+            },
+            {
+                "id": 8,
+                "name": "Скручивания",
+                "description": "Упражнение для укрепления пресса. Лежа на спине, согните колени, руки за головой. Поднимите верхнюю часть тела, скручивая торс, затем опуститесь обратно.",
+                "muscleGroup": [
+                    "Пресс"
+                ],
+                "difficulty": 1,
+                "equipment": [
+                    "Коврик"
+                ],
+                "image": "https://power-body.ru/wp-content/uploads/2017/04/skruchivaniya-1.jpg",
+                "type": "reps",
+                "reps": 20,
+                "time": null,
+                "weight": null
+            },
+            {
+                "id": 15,
+                "name": "Гиперэкстензия",
+                "description": "Упражнение для укрепления нижней части спины. Лежа на специальной скамье, зафиксируйте ноги. Опустите верхнюю часть тела вниз, затем поднимите до уровня тела.",
+                "muscleGroup": [
+                    "Спина"
+                ],
+                "difficulty": 2,
+                "equipment": [
+                    "Скамья для гиперэкстензии"
+                ],
+                "image": "https://cross.expert/wp-content/uploads/2016/12/giperekstenziya.jpg",
+                "type": "reps",
+                "reps": 14,
+                "time": null,
+                "weight": null
+            }
         ]
     }
 ];

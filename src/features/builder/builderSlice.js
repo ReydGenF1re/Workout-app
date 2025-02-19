@@ -5,13 +5,30 @@ const initialState = {
     selectedExercises: [],
     allWorkouts: [],
     workoutName: '',
-    userWeight: '',
+    userWeight: localStorage.getItem('weight') || '',
+    currentWorkout: null,
+    score: 0,
+    totalTime: 0,
+    totalCalories:0,
+    totalWorkouts:0,
 };
 
 export const builderSlice = createSlice({
     name: 'workout',
     initialState,
     reducers: {
+        updateScore: (state, action) => {
+            state.score += action.payload;
+        },
+        updateTotalWorkouts: (state, action) => {
+            state.totalWorkouts += action.payload;
+        },
+        updateTotalCalories: (state, action) => {
+            state.totalCalories += action.payload;
+        },
+        updateTotalTime: (state, action) => {
+            state.totalTime += action.payload;
+        },
         setExercises: (state, action) => {
             state.exercises = action.payload;
         },
@@ -42,7 +59,10 @@ export const builderSlice = createSlice({
             console.log(action)
             state.allWorkouts = state.allWorkouts.filter(workout => workout.name !== action.payload.name);
             localStorage.setItem('workouts', JSON.stringify(state.allWorkouts));
-        }
+        },
+        setCurrentWorkout: (state, action) => {
+            state.currentWorkout = action.payload;
+        },
     },
 });
 
@@ -56,6 +76,11 @@ export const {
     setUserWeight,
     clearWorkout,
     deleteWorkout,
+    setCurrentWorkout,
+    updateScore,
+    updateTotalCalories,
+    updateTotalTime,
+    updateTotalWorkouts,
 } = builderSlice.actions;
 
 export default builderSlice.reducer;

@@ -7,7 +7,7 @@ const AppLayout = () => {
     const navigation = useNavigation();
     const isLoading = navigation.state === "loading";
     return (
-        <div className={'min-h-screen bg-zinc-900 text-white grid grid-rows-[auto_1fr] p-4'}>
+        <div className={'min-h-screen overflow-x-hidden bg-zinc-900 text-white grid grid-rows-[auto_1fr] p-4'}>
 
             <Header />
             <main className={'mx-auto w-full max-w-[1440px]'}>

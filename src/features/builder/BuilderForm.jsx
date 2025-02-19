@@ -123,12 +123,6 @@ const BuilderForm = ({onClose}) => {
                         {filteredData.map((exercise) => (
                             <li key={exercise.id} className="flex flex-col sm:flex-row text-center justify-between items-center p-2 rounded gap-2">
                                 {exercise.name}
-                                {/*<button*/}
-                                {/*    onClick={() => handleAddExercise(exercise)}*/}
-                                {/*    className="bg-blue-500 hover:bg-blue-600 hover:translate-y-[1px] transition-all text-white px-2 py-1 rounded"*/}
-                                {/*>*/}
-                                {/*    Добавить*/}
-                                {/*</button>*/}
                                 <Button color={'text-pink-500'} fn={() => handleAddExercise(exercise)}>Добавить</Button>
                             </li>
                         ))}
