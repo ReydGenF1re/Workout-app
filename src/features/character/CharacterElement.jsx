@@ -1,16 +1,53 @@
-import React, {Suspense} from 'react';
+import React, {Suspense, useEffect, useState} from 'react';
 import NightSky from "./NightSky.jsx";
 import EnergyParticles from "./EnergyParticles.jsx";
-import CharacterModel from "./CharacterModel.jsx";
+import YungGravy from "./YungGravy.jsx";
 import {Canvas} from "@react-three/fiber";
 import CameraRotation from "./CameraRotation.jsx";
+import BabyNoMoney from "./BabyNoMoney.jsx";
+import BabyNoMoneyFat from "./BabyNoMoneyFat.jsx";
+import YungGravyFat from "./YungGravyFat.jsx";
+import {useAnimations, useFBX} from "@react-three/drei";
+import CanvasLoader from "../../ui/CanvasLoader.jsx";
+
+export function remapAnimationTracks(animation) {
+    animation.tracks = animation.tracks.map(track => {
+        const newName = track.name.replace('mixamorig', '');
+        track.name = newName;
+        return track;
+    });
+    return animation;
+}
+
+export function animationEffect(actions, animationName) {
+    if (actions[animationName]) {
+        actions[animationName].reset().fadeIn(0.5).play();
+        return () => actions[animationName].fadeOut(0.5);
+    } else {
+        console.warn(`Animation "${animationName}" not found`);
+    }
+}
+
+export function useAnimation(group, path = '/models/brooklyn.fbx', name = 'brooklynAnimation') {
+    const {animations} = useFBX(path);
+    animations[0].name = name;
+    animations[0] = remapAnimationTracks(animations[0]);
+    const {actions} = useAnimations([animations[0]], group)
+    return actions;
+}
 
 const CharacterElement = () => {
+    const [boughtCharacters, setBoughtCharacters] = useState([]);
+    useEffect(() => {
+        const storedCharacters = JSON.parse(localStorage.getItem('purchasedCharacters')) || [];
+        setBoughtCharacters(storedCharacters);
+    }, []);
+
 
     return (
         <Canvas shadows className={'border-2 border-fuchsia-500 rounded-lg'}>
-            <NightSky />
-            <EnergyParticles count={500} radius={6} />
+            <NightSky/>
+            <EnergyParticles count={500} radius={6}/>
             <directionalLight
                 position={[10, 10, 10]}
                 intensity={10}
@@ -45,11 +82,24 @@ const CharacterElement = () => {
 
             <CameraRotation/>
 
-            <Suspense fallback={null}>
-                <CharacterModel
-                    position-y={-3}
-                    scale={3}
-                />
+            <Suspense fallback={<CanvasLoader/>}>
+                {localStorage.getItem("totalWorkouts") < 40 && (
+                    <>
+                        <YungGravyFat scale={3} position-y={-3} position-z={2}/>
+                    </>
+                )}
+                {localStorage.getItem("totalWorkouts") >= 40 && (
+                    <>
+                        <YungGravy scale={3} position-y={-3} position-z={2}/>
+                    </>
+                )}
+                {boughtCharacters.includes('BBNO$') && localStorage.getItem("totalWorkouts") >= 80 && (
+                    <BabyNoMoney position-y={-3} scale={3} position-z={-2} animationName="SwingDancing" />
+                )}
+                {boughtCharacters.includes('BBNO$') && localStorage.getItem("totalWorkouts") < 80 && (
+                    <BabyNoMoneyFat position-y={-3} scale={3} position-z={-2} animationName="SwingDancing" />
+                )}
+
 
             </Suspense>
         </Canvas>

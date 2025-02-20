@@ -40,7 +40,7 @@ const Home = () => {
                     <div className="text-2xl mb-9 p-5 ">
                         <h2 className={`font-xl text-5xl text-white transition-opacity duration-500 ${showH2 ? 'opacity-100' : 'opacity-0'}`}>Это
                             не просто фитнес</h2><br/>
-                        <h1 className={` [text-shadow:_0_1px_5px_#F03E3E] uppercase text-7xl text-fuchsia-500 font-bold drop-shadow-lg transition-opacity duration-500 ${showH1 ? 'opacity-100' : 'opacity-0'}`}>Это
+                        <h1 className={` [text-shadow:_0_1px_5px_#ff007c] uppercase text-7xl text-fuchsia-500 font-bold drop-shadow-lg transition-opacity duration-500 ${showH1 ? 'opacity-100' : 'opacity-0'}`}>Это
                             - образ жизни</h1>
                     </div>
                     {!showForm ? (

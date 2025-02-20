@@ -16,7 +16,6 @@ const Workout = () => {
     const [workoutStats, setWorkoutStats] = useState({
         totalTime: 0,
         exercisesCompleted: 0,
-        totalReps: 0,
         totalWeight: 0,
         caloriesBurned: 0,
         height: localStorage.getItem('height') || 170,
@@ -70,7 +69,6 @@ const Workout = () => {
         setWorkoutStats(prevStats => ({
             ...prevStats,
             exercisesCompleted: prevStats.exercisesCompleted + 1,
-            totalReps: prevStats.totalReps + (currentExercise.reps || 0),
             totalWeight: prevStats.totalWeight + (currentExercise.weight || 0) * (currentExercise.reps || 1)
         }));
 

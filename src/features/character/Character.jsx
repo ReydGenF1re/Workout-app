@@ -1,22 +1,19 @@
-import React, {Suspense, useRef, useState, useEffect, useMemo} from 'react';
-import {Canvas} from "@react-three/fiber";
-import CharacterModel from "./CharacterModel.jsx";
-import NightSky from "./NightSky.jsx";
-import EnergyParticles from "./EnergyParticles.jsx";
+import React from 'react';
+
 import CharacterElement from "./CharacterElement.jsx";
-import {useSelector} from "react-redux";
+import Store from "./Store.jsx";
 
 const Character = () => {
-    const totalWorkouts = useSelector(state => state.workout.totalWorkouts);
-    const totalCalories = useSelector(state => state.workout.totalCalories);
-    const totalTime = useSelector(state => state.workout.totalTime);
-    const score = useSelector(state => state.workout.score);
-
-
+    const totalWorkouts = localStorage.getItem('totalWorkouts') || 0;
+    const totalCalories = localStorage.getItem('totalCalories') || 0;
+    const totalTime = localStorage.getItem('totalTime') || 0;
+    const score = localStorage.getItem('score') || 0;
+    const [showStore, setShowStore] = React.useState(false);
     const handleCustomize = () => {
     };
 
-    const handleUpdateStats = () => {
+    const handleShowStore = () => {
+        setShowStore(show => !show);
     };
 
     return (
@@ -24,25 +21,28 @@ const Character = () => {
             <div className="w-full h-full max-h-[600px] rounded-lg shadow-lg overflow-hidden relative">
                 <CharacterElement/>
             </div>
-            <div>
-                <div className="text-cyan-500 text-xl mb-2">Сожжено калорий: <span
-                    className={'text-pink-500'}> {totalCalories}</span></div>
-                <div className="text-cyan-500 text-xl mb-2">Получено очков всего:<span
-                    className={'text-pink-500'}>  {score}</span></div>
-                <div className="text-cyan-500 text-xl">Пройдено тренировок: <span
-                    className={'text-pink-500'}> {totalWorkouts} </span>
+            <div className="flex flex-col justify-center items-center gap-4 text-center">
+                <div className="text-cyan-500 text-xl mb-2">Сожжено калорий: <div
+                    className={'text-pink-500'}> {totalCalories}</div></div>
+                <div className="text-cyan-500 text-xl mb-2">Получено очков всего:
+                    <div
+                        className={'text-pink-500'}>  {score}</div>
                 </div>
-                <div className="text-cyan-500 text-xl">Всего ты занимался: <span
-                    className={'text-pink-500'}>  {totalTime / 60} минут </span></div>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
-                        onClick={handleCustomize}>
-                    Customize
+                <div className="text-cyan-500 text-xl">Пройдено тренировок: <div
+                    className={'text-pink-500'}> {totalWorkouts} </div>
+                </div>
+                <div className="text-cyan-500 text-xl">Всего ты занимался: <div
+                    className={'text-pink-500'}>  {Math.round(totalTime / 60)} мин.</div></div>
+                <button className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded"
+                        onClick={handleShowStore}>
+                    Магазин
                 </button>
                 <button className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded"
-                        onClick={handleUpdateStats}>
-                    Update Stats
+                >
+                    Выбрать цель тренировки
                 </button>
             </div>
+            {showStore && <Store/>}
         </div>
     );
 };
