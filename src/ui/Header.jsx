@@ -19,7 +19,7 @@ const Header = () => {
                 </button>
                 <nav className="hidden md:block">
                     <ul className="flex gap-6 text-xl">
-                        <li><NavLink className="nav-link" to="/exercises">Упражнения</NavLink></li>
+                        <li><NavLink className="nav-link" to="/public/exercises">Упражнения</NavLink></li>
                         <li><NavLink className="nav-link" to="/builder">Тренировки</NavLink></li>
                         <li><NavLink className="nav-link" to="/character">Персонаж</NavLink></li>
                     </ul>
@@ -34,7 +34,7 @@ const Header = () => {
                 </button>
                 <nav className="mt-16">
                     <ul className="flex flex-col text-xl gap-6">
-                        <li><NavLink className="nav-link block py-2 px-6" to="/exercises" onClick={toggleSidebar}>Упражнения</NavLink></li>
+                        <li><NavLink className="nav-link block py-2 px-6" to="/public/exercises" onClick={toggleSidebar}>Упражнения</NavLink></li>
                         <li><NavLink className="nav-link block py-2 px-6" to="/builder" onClick={toggleSidebar}>Тренировки</NavLink></li>
                         <li><NavLink className="nav-link block py-2 px-6" to="/character" onClick={toggleSidebar}>Бобрище</NavLink></li>
                     </ul>
