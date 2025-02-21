@@ -5,71 +5,40 @@ import {achievements} from "../../services/achievements.js";
 
 const WorkoutSummary = ({ stats }) => {
     const SCORE_MULTIPLIER = 10;
-    const isFirstRun = useRef(true);
+    console.log('WorkoutSummary render, получены stats:', stats);
 
-    const getLocalStorageItem = (key, defaultValue) => {
-        try {
-            console.log(`Пытаемся получить ${key} из localStorage`);
-            const item = localStorage.getItem(key);
-            console.log(`Значение ${key}:`, item);
-            return item ? JSON.parse(item) : defaultValue;
-        } catch (error) {
-            console.error(`Ошибка при чтении из localStorage (${key}):`, error);
-            return defaultValue;
-        }
-    };
-
-    const setLocalStorageItem = (key, value) => {
-        try {
-            console.log(`Пытаемся записать ${key} в localStorage:`, value);
-            localStorage.setItem(key, JSON.stringify(value));
-            // Проверяем, записалось ли значение
-            const savedValue = localStorage.getItem(key);
-            console.log(`Проверка записи ${key}:`, savedValue);
-        } catch (error) {
-            console.error(`Ошибка при записи в localStorage (${key}):`, error);
-            toast.error('Не удалось сохранить прогресс. Проверьте настройки браузера.');
-        }
-    };
-
-    // Добавим логирование начального состояния
-    console.log('Initial stats:', stats);
-
-    const [unlockedAchievements, setUnlockedAchievements] = useState(() => {
-        const saved = getLocalStorageItem('achievements', []);
-        console.log('Initial achievements:', saved);
-        return saved;
-    });
-
-    useEffect(() => {
-        console.log('useEffect triggered, isFirstRun:', isFirstRun.current);
-
-        if (isFirstRun.current) {
-            isFirstRun.current = false;
-            return;
-        }
-
+    // Сразу при рендере сохраняем прогресс
+    const saveProgress = () => {
         const { caloriesBurned, totalTime, exercisesCompleted } = stats;
-        console.log('Current workout stats:', { caloriesBurned, totalTime, exercisesCompleted });
 
-        const prevCalories = getLocalStorageItem('totalCalories', 0);
-        const prevTime = getLocalStorageItem('totalTime', 0);
-        const prevWorkouts = getLocalStorageItem('totalWorkouts', 0);
-        const prevScore = getLocalStorageItem('score', 0);
+        // Получаем текущие значения
+        const prevCalories = JSON.parse(localStorage.getItem('totalCalories')) || 0;
+        const prevTime = JSON.parse(localStorage.getItem('totalTime')) || 0;
+        const prevWorkouts = JSON.parse(localStorage.getItem('totalWorkouts')) || 0;
+        const prevScore = JSON.parse(localStorage.getItem('score')) || 0;
 
-        console.log('Previous values:', { prevCalories, prevTime, prevWorkouts, prevScore });
-
+        // Вычисляем новые значения
         const newCalories = Math.round(prevCalories + caloriesBurned);
         const newTime = prevTime + totalTime;
         const newWorkouts = prevWorkouts + 1;
         const newScore = prevScore + (exercisesCompleted * SCORE_MULTIPLIER);
 
-        console.log('New values to save:', { newCalories, newTime, newWorkouts, newScore });
+        // Сохраняем значения
+        localStorage.setItem('totalCalories', JSON.stringify(newCalories));
+        localStorage.setItem('totalTime', JSON.stringify(newTime));
+        localStorage.setItem('totalWorkouts', JSON.stringify(newWorkouts));
+        localStorage.setItem('score', JSON.stringify(newScore));
 
-        setLocalStorageItem('totalCalories', newCalories);
-        setLocalStorageItem('totalTime', newTime);
-        setLocalStorageItem('totalWorkouts', newWorkouts);
-        setLocalStorageItem('score', newScore);
+        console.log('Сохранены новые значения:', {
+            totalCalories: newCalories,
+            totalTime: newTime,
+            totalWorkouts: newWorkouts,
+            score: newScore
+        });
+
+        // Проверяем достижения
+        const savedAchievements = localStorage.getItem('achievements');
+        const unlockedAchievements = savedAchievements ? JSON.parse(savedAchievements) : [];
 
         const newStats = {
             totalCalories: newCalories,
@@ -78,30 +47,26 @@ const WorkoutSummary = ({ stats }) => {
             exercisesCompleted
         };
 
-        console.log('Checking for new achievements with stats:', newStats);
-
         const newAchievements = achievements.filter(achievement => {
-            const isUnlocked = !unlockedAchievements.some(a => a.id === achievement.id);
-            const isConditionMet = achievement.condition(newStats);
-            console.log(`Achievement ${achievement.name}: unlocked=${isUnlocked}, conditionMet=${isConditionMet}`);
-            return isUnlocked && isConditionMet;
+            return !unlockedAchievements.some(a => a.id === achievement.id) &&
+                achievement.condition(newStats);
         });
-
-        console.log('New achievements:', newAchievements);
 
         if (newAchievements.length > 0) {
             const updatedAchievements = [...unlockedAchievements, ...newAchievements];
-            console.log('Updating achievements:', updatedAchievements);
-            setUnlockedAchievements(updatedAchievements);
-            setLocalStorageItem('achievements', updatedAchievements);
+            localStorage.setItem('achievements', JSON.stringify(updatedAchievements));
 
             newAchievements.forEach(achievement => {
                 toast.success(`Поздравляем! Вы разблокировали достижение "${achievement.name}"!`);
             });
         }
+    };
 
-    }, [stats, unlockedAchievements]);
-
+    // Вызываем функцию сохранения сразу при рендере
+    if (stats.caloriesBurned > 0) {  // Проверяем, что тренировка была
+        console.log('Вызываем saveProgress');
+        saveProgress();
+    }
 
     return (
         <div className="bg-zinc-800 p-6 rounded-lg shadow-lg">
