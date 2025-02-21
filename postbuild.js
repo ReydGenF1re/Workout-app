@@ -1,4 +1,4 @@
-import { readdir, rename, rmdir } from 'fs';
+import { readdir, copyFile, unlink, rmdir } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -16,13 +16,18 @@ readdir(staticDir, (err, files) => {
         const oldPath = join(staticDir, file);
         const newPath = join(publicDir, file);
 
-        rename(oldPath, newPath, (err) => {
+        copyFile(oldPath, newPath, (err) => {
             if (err) throw err;
+
+            // Удаление файла после копирования
+            unlink(oldPath, (err) => {
+                if (err) throw err;
+            });
         });
     });
 
     // Удаление пустой папки static
-    rmdir(staticDir, (err) => {
+    rmdir(staticDir, { recursive: true }, (err) => {
         if (err) throw err;
     });
 });
