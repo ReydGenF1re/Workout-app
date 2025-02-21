@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, createHashRouter, RouterProvider} from "react-router-dom";
 import Home from "./ui/Home.jsx";
 import ExercisesCatalog, {loadExercises} from "./features/exercise_catalog/ExercisesCatalog.jsx";
 import Builder from "./features/builder/Builder.jsx";
@@ -14,7 +14,7 @@ import {setAllWorkouts, setExercises} from "./features/builder/builderSlice.js";
 import {useDispatch} from "react-redux";
 import {predefinedWorkouts} from "./services/apiExercises.js";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: "/",
         element: <Home/>,
