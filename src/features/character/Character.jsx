@@ -6,6 +6,7 @@ import {GoalProvider, useGoal} from './GoalContext';
 import Modal from "../../ui/Modal.jsx";
 import GoalForm from "./GoalModal.jsx";
 import AudioPlayer from "../../ui/AudioPlayer.jsx";
+import {useNavigate} from "react-router-dom";
 
 const Character = () => {
     const totalWorkouts = localStorage.getItem('totalWorkouts') || 0;
@@ -15,7 +16,7 @@ const Character = () => {
     const [showStore, setShowStore] = useState(false);
     const [boughtCharacters, setBoughtCharacters] = useState(JSON.parse(localStorage.getItem('purchasedCharacters')) || []);
     const [showGoalModal, setShowGoalModal] = useState(false);
-
+    const navigate = useNavigate();
     const handleBuyCharacter = () => {
         setBoughtCharacters([...boughtCharacters, 'BBNO$']);
     };
@@ -74,7 +75,7 @@ const Character = () => {
                     localStorage.setItem('score', 9999);
                     localStorage.setItem('purchasedCharacters', JSON.stringify(['BBNO$']));
                     localStorage.setItem('goal', 'Я ГИГАЧАД😎');
-                    history.go(0);
+                    navigate(0)
                 }} className={'absolute bottom-4 right-4'}>Режим разработчика</button>
             </div>
         </GoalProvider>
