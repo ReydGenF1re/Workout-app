@@ -10,4 +10,8 @@ export default defineConfig({
     build: {
         outDir: 'public/static'
     },
+
+    server: {
+        historyApiFallback: true
+    }
 })
