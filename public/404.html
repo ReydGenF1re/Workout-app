@@ -3,18 +3,17 @@
 <head>
   <meta charset="utf-8">
   <title>Fitness App</title>
-  <!--  AI Again, Gitlab pages doesn't know how to deal with react router i guess-->
+  <!-- GitLab Pages handling for React Router WITH THE HELP OF AI, FORGIVE ME -->
 
   <script type="text/javascript">
-    var pathSegmentsToKeep = 0;
-
     var l = window.location;
+    var path = l.pathname;
+    if (path[path.length - 1] === '/') {
+      path = path.slice(0, -1);
+    }
     l.replace(
             l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-            l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-            l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-            (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-            l.hash
+            path + l.search + l.hash
     );
   </script>
 </head>
