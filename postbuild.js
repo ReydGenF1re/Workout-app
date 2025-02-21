@@ -1,3 +1,5 @@
+// It was made by AI, please forgive me, I didn't know how to deploy to gitlab pages, and it's the only way to go
+
 import fs from 'fs-extra';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
