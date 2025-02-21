@@ -1,4 +1,4 @@
-import { readdir, copyFile, unlink, rmdir } from 'fs';
+import { readdir, copyFile, unlink, lstat, mkdir, rm } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -9,25 +9,44 @@ const __dirname = dirname(__filename);
 const staticDir = join(__dirname, 'public', 'static');
 const publicDir = join(__dirname, 'public');
 
-readdir(staticDir, (err, files) => {
-    if (err) throw err;
+function copyRecursiveSync(src, dest) {
+    lstat(src, (err, stats) => {
+        if (err) {
+            if (err.code === 'ENOENT') {
+                console.log(`Directory ${src} does not exist, skipping.`);
+                return;
+            } else {
+                throw err;
+            }
+        }
 
-    files.forEach(file => {
-        const oldPath = join(staticDir, file);
-        const newPath = join(publicDir, file);
-
-        copyFile(oldPath, newPath, (err) => {
-            if (err) throw err;
-
-            // Удаление файла после копирования
-            unlink(oldPath, (err) => {
+        if (stats.isDirectory()) {
+            mkdir(dest, { recursive: true }, (err) => {
                 if (err) throw err;
-            });
-        });
-    });
 
-    // Удаление пустой папки static
-    rmdir(staticDir, { recursive: true }, (err) => {
-        if (err) throw err;
+                readdir(src, (err, files) => {
+                    if (err) throw err;
+
+                    files.forEach(file => {
+                        copyRecursiveSync(join(src, file), join(dest, file));
+                    });
+                });
+            });
+        } else {
+            copyFile(src, dest, (err) => {
+                if (err) throw err;
+
+                unlink(src, (err) => {
+                    if (err && err.code !== 'ENOENT') throw err;
+                });
+            });
+        }
     });
+}
+
+copyRecursiveSync(staticDir, publicDir);
+
+// Удаление пустой папки static
+rm(staticDir, { recursive: true, force: true }, (err) => {
+    if (err) throw err;
 });
