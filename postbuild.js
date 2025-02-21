@@ -1,4 +1,4 @@
-import { readdir, copyFile, unlink, lstat, mkdir, rm } from 'fs';
+import fs from 'fs-extra';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -9,44 +9,25 @@ const __dirname = dirname(__filename);
 const staticDir = join(__dirname, 'public', 'static');
 const publicDir = join(__dirname, 'public');
 
-function copyRecursiveSync(src, dest) {
-    lstat(src, (err, stats) => {
-        if (err) {
-            if (err.code === 'ENOENT') {
-                console.log(`Directory ${src} does not exist, skipping.`);
-                return;
+fs.pathExists(staticDir, (err, exists) => {
+    if (err) {
+        console.error('Ошибка при проверке существования директории:', err);
+        return;
+    }
+
+    if (exists) {
+        fs.copy(staticDir, publicDir, { overwrite: true }, err => {
+            if (err) {
+                console.error('Ошибка при копировании файлов:', err);
             } else {
-                throw err;
+                console.log('Файлы успешно скопированы');
+                fs.remove(staticDir, err => {
+                    if (err) console.error('Ошибка при удалении папки:', err);
+                    else console.log('Папка успешно удалена');
+                });
             }
-        }
-
-        if (stats.isDirectory()) {
-            mkdir(dest, { recursive: true }, (err) => {
-                if (err) throw err;
-
-                readdir(src, (err, files) => {
-                    if (err) throw err;
-
-                    files.forEach(file => {
-                        copyRecursiveSync(join(src, file), join(dest, file));
-                    });
-                });
-            });
-        } else {
-            copyFile(src, dest, (err) => {
-                if (err) throw err;
-
-                unlink(src, (err) => {
-                    if (err && err.code !== 'ENOENT') throw err;
-                });
-            });
-        }
-    });
-}
-
-copyRecursiveSync(staticDir, publicDir);
-
-// Удаление пустой папки static
-rm(staticDir, { recursive: true, force: true }, (err) => {
-    if (err) throw err;
+        });
+    } else {
+        console.log(`Директория ${staticDir} не существует, пропускаем копирование.`);
+    }
 });
