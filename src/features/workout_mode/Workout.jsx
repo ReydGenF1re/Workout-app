@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import Button from '../../ui/Button.jsx';
 import WorkoutSummary from './WorkoutSummary.jsx';
+import AudioPlayer from "../../ui/AudioPlayer.jsx";
 
 const Workout = () => {
     const currentWorkout = useSelector((state) => state.workout.currentWorkout);
@@ -10,6 +11,14 @@ const Workout = () => {
     const [timer, setTimer] = useState(0);
     const currentExercise = currentWorkout?.exercises[currentExerciseIndex];
     const [isWorkoutCompleted, setIsWorkoutCompleted] = useState(false);
+    const defaultAudioFile = '/music/training.mp3';
+
+    // Эффект для создания события загрузки аудио при монтировании
+    useEffect(() => {
+        const audioEvent = new Event('audioLoad');
+        audioEvent.audioPath = defaultAudioFile;
+        window.dispatchEvent(audioEvent);
+    }, []);
 
     const [workoutStats, setWorkoutStats] = useState({
         totalTime: 0,
@@ -90,6 +99,7 @@ const Workout = () => {
     if (isWorkoutCompleted) return <WorkoutSummary stats={workoutStats}/>
     return (
         <div className="max-w-4xl mx-auto p-6 bg-zinc-800 rounded-lg shadow-lg">
+
             <h2 className="text-3xl text-center font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500">
                 {currentWorkout.name}
             </h2>
@@ -137,6 +147,10 @@ const Workout = () => {
             ) : (
                 <p className="text-2xl text-center">Тренировка завершена!</p>
             )}
+            <div className="mt-2">
+                <AudioPlayer defaultAudioFile={defaultAudioFile}
+                             autoplay={true}/>
+            </div>
         </div>
     );
 };

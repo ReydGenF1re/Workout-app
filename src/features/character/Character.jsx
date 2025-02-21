@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import CharacterElement from "./CharacterElement.jsx";
 import Store from "./Store.jsx";
 import Button from "../../ui/Button.jsx";
@@ -17,6 +17,14 @@ const Character = () => {
     const [boughtCharacters, setBoughtCharacters] = useState(JSON.parse(localStorage.getItem('purchasedCharacters')) || []);
     const [showGoalModal, setShowGoalModal] = useState(false);
     const navigate = useNavigate();
+    const defaultAudioFile = '/music/fortuna.mp3';
+
+    // Эффект для создания события загрузки аудио при монтировании
+    useEffect(() => {
+        const audioEvent = new Event('audioLoad');
+        audioEvent.audioPath = defaultAudioFile;
+        window.dispatchEvent(audioEvent);
+    }, []);
     const handleBuyCharacter = () => {
         setBoughtCharacters([...boughtCharacters, 'BBNO$']);
     };
@@ -67,7 +75,8 @@ const Character = () => {
                 )}
             </div>
             <div>
-                <AudioPlayer/>
+                <AudioPlayer defaultAudioFile={defaultAudioFile}
+                             autoplay={true}/>
                 <button onClick={() => {
                     localStorage.setItem('totalWorkouts', 9999);
                     localStorage.setItem('totalCalories', 9999);

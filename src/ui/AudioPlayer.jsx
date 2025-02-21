@@ -1,12 +1,39 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { FaPlay, FaPause, FaForward, FaBackward } from 'react-icons/fa';
 
-const AudioPlayer = () => {
+const AudioPlayer = ({ defaultAudioFile = null, autoplay = false }) => {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [audioFile, setAudioFile] = useState(null);
+    const [audioFile, setAudioFile] = useState(defaultAudioFile);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
     const audioRef = useRef(null);
+    useEffect(() => {
+        if (defaultAudioFile) {
+            setAudioFile(defaultAudioFile);
+            if (audioRef.current) {
+                audioRef.current.load();
+                if (autoplay) {
+                    audioRef.current.play().then(() => setIsPlaying(true));
+                }
+            }
+        }
+    }, [defaultAudioFile, autoplay]);
+    useEffect(() => {
+        const handleDefaultAudio = (event) => {
+            if (event.audioPath) {
+                setAudioFile(event.audioPath);
+                if (audioRef.current) {
+                    audioRef.current.load();
+                    if (autoplay) {
+                        audioRef.current.play().then(() => setIsPlaying(true));
+                    }
+                }
+            }
+        };
+
+        window.addEventListener('audioLoad', handleDefaultAudio);
+        return () => window.removeEventListener('audioLoad', handleDefaultAudio);
+    }, [autoplay]);
 
     useEffect(() => {
         if (isPlaying) {
@@ -58,14 +85,15 @@ const AudioPlayer = () => {
     };
 
     return (
-        <div className="bg-zinc-900  rounded-lg shadow-lg  text-center w-full text-white">
+        <div className="bg-zinc-900  rounded-lg shadow-lg  text-center w-full text-white py-4">
             <div className="mt-4">
-                <input
+                {!defaultAudioFile && <input
                     type="file"
                     accept="audio/*"
                     onChange={handleFileChange}
                     className="text-gray-400 mb-4"
-                />
+                />}
+
                 {audioFile && (
                     <div className="custom-audio-player">
                         <audio
