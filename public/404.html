@@ -3,18 +3,21 @@
 <head>
   <meta charset="utf-8">
   <title>Fitness App</title>
-  <!-- GitLab Pages handling for React Router WITH THE HELP OF AI, FORGIVE ME -->
+  <!-- GitLab Pages handling for React Router, AI I BEG YOU  -->
 
   <script type="text/javascript">
     var l = window.location;
-    var path = l.pathname;
-    if (path[path.length - 1] === '/') {
-      path = path.slice(0, -1);
+    var rootUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/';
+    if (l.pathname !== '/') {
+      window.history.replaceState(null, null, rootUrl + '?redirect=' + l.pathname + l.search + l.hash);
+      window.location.replace(rootUrl + '?redirect=' + l.pathname + l.search + l.hash);
+    } else {
+      var params = new URLSearchParams(l.search);
+      var redirectPath = params.get('redirect');
+      if (redirectPath) {
+        window.history.replaceState(null, null, rootUrl + redirectPath);
+      }
     }
-    l.replace(
-            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-            path + l.search + l.hash
-    );
   </script>
 </head>
 <body>
