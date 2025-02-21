@@ -2,16 +2,16 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Fitness App</title>
-  <!-- GitLab Pages handling for React Router -->
-
+  <title>Page Not Found</title>
   <script type="text/javascript">
-    var l = window.location;
-    var pathname = l.pathname;
-    var rootUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/';
-    window.location.replace(rootUrl + '?route=' + encodeURIComponent(pathname + l.search + l.hash));
+    // Получаем текущий путь и перенаправляем на соответствующий маршрут
+    var path = window.location.pathname + window.location.search + window.location.hash;
+    var newPath = '/?route=' + encodeURIComponent(path);
+    window.location.replace(newPath);
   </script>
 </head>
 <body>
+<h1>Page Not Found</h1>
+<p>Redirecting...</p>
 </body>
 </html>
