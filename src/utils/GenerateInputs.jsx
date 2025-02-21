@@ -26,12 +26,7 @@ const GenerateInputs = ({register, errors}) => {
                 {...register("muscleGroup", { required: "Это поле обязательно" })}
             />
             {errors.muscleGroup && <span className="text-red-500">{errors.muscleGroup.message}</span>}
-            {/*<input*/}
-            {/*    {...register("muscleGroup", { required: "Это поле обязательно" })}*/}
-            {/*    placeholder="Группы мышц (через запятую)"*/}
-            {/*    className="w-full p-2 border rounded"*/}
-            {/*/>*/}
-            {/*{errors.muscleGroup && <span className="text-red-500">{errors.muscleGroup.message}</span>}*/}
+
             <h2 className={"text-xl"}>Выберите оборудование</h2>
             <EquipmentSelector
                 isSelect={false}
@@ -48,12 +43,7 @@ const GenerateInputs = ({register, errors}) => {
             </select>
             {errors.difficulty && <span className="text-red-500">{errors.difficulty.message}</span>}
 
-            {/*<input*/}
-            {/*    {...register("equipment", {required: "Это поле обязательно"})}*/}
-            {/*    placeholder="Оборудование (через запятую)"*/}
-            {/*    className="w-full p-2 border rounded"*/}
-            {/*/>*/}
-            {/*{errors.equipment && <span className="text-red-500">{errors.equipment.message}</span>}*/}
+
             <select
                 {...register("type", {required: "Это поле обязательно"})}
                 className="w-full p-2 border rounded bg-black text-white"

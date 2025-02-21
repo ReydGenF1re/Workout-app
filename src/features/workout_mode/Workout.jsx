@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, {useState, useEffect} from 'react';
+import {useSelector} from 'react-redux';
 import Button from '../../ui/Button.jsx';
 import WorkoutSummary from './WorkoutSummary.jsx';
 
 const Workout = () => {
-    const userWeight = useSelector((state) => state.workout.userWeight);
-    // console.log(userWeight)
     const currentWorkout = useSelector((state) => state.workout.currentWorkout);
     const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
     const [isResting, setIsResting] = useState(false);
@@ -89,7 +87,7 @@ const Workout = () => {
     const adjustRestTime = (seconds) => {
         setTimer((prevTimer) => Math.max(0, prevTimer + seconds));
     };
-    if(isWorkoutCompleted) return <WorkoutSummary stats={workoutStats}/>
+    if (isWorkoutCompleted) return <WorkoutSummary stats={workoutStats}/>
     return (
         <div className="max-w-4xl mx-auto p-6 bg-zinc-800 rounded-lg shadow-lg">
             <h2 className="text-3xl text-center font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500">
@@ -118,15 +116,17 @@ const Workout = () => {
                 <div className="text-center">
                     <h3 className="text-2xl font-semibold mb-4">{currentExercise.name}</h3>
                     {currentExercise.time ? (
-                        <p className="text-4xl font-bold mb-6 text-pink-500">{timer}s</p>
-                    ) : (
-                        <p className="text-4xl font-bold mb-6 text-blue-500">
-                            {currentExercise.reps} повторений
-                        </p>
-                    )}
-                    {currentExercise.weight > 0 && (
-                        <p className="text-xl mb-6">Вес: {currentExercise.weight} кг</p>
-                    )}
+                            <p className="text-4xl font-bold mb-6 text-pink-500">{timer}s</p>
+                        ) :
+                        currentExercise.weight > 0 ? (
+                            <p className="text-xl mb-6">Вес: {currentExercise.weight} кг</p>
+                        ) : (
+                            <p className="text-4xl font-bold mb-6 text-blue-500">
+                                {currentExercise.reps} повторений
+                            </p>
+                        )
+
+                    }
                     <Button
                         fn={startNextExercise}
                         bgColor="bg-gradient-to-r from-purple-500 to-pink-500"

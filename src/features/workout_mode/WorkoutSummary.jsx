@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { updateScore, updateTotalCalories, updateTotalTime, updateTotalWorkouts } from '../builder/builderSlice.js';
+import React, { useEffect, useRef, useState } from 'react';
+
+import toast from 'react-hot-toast';
+import {achievements} from "../../services/achievements.js";
 
 const WorkoutSummary = ({ stats }) => {
     const SCORE_MULTIPLIER = 10;
-    const dispatch = useDispatch();
-    const isFirstRun = React.useRef(true);
+    const isFirstRun = useRef(true);
+    const [unlockedAchievements, setUnlockedAchievements] = useState(JSON.parse(localStorage.getItem('achievements')) || []);
+
     useEffect(() => {
         if (isFirstRun.current) {
             isFirstRun.current = false;
@@ -13,24 +15,39 @@ const WorkoutSummary = ({ stats }) => {
         }
         const { caloriesBurned, totalTime, exercisesCompleted } = stats;
 
-        // Retrieve previous values from local storage and parse them to integers
         const prevCalories = Math.round(parseInt(localStorage.getItem('totalCalories'))) || 0;
         const prevTime = parseInt(localStorage.getItem('totalTime')) || 0;
         const prevWorkouts = parseInt(localStorage.getItem('totalWorkouts')) || 0;
         const prevScore = parseInt(localStorage.getItem('score')) || 0;
 
-        // Calculate new values by adding the current stats
         const newCalories = Math.round(prevCalories + caloriesBurned);
         const newTime = prevTime + totalTime;
         const newWorkouts = prevWorkouts + 1;
         const newScore = prevScore + (exercisesCompleted * SCORE_MULTIPLIER);
 
-        // Store updated values in local storage
         localStorage.setItem('totalCalories', newCalories);
         localStorage.setItem('totalTime', newTime);
         localStorage.setItem('totalWorkouts', newWorkouts);
         localStorage.setItem('score', newScore);
-    }, []); // The empty array ensures the effect runs only once after the component mounts
+
+        const newStats = { totalCalories: newCalories, totalTime: newTime, totalWorkouts: newWorkouts, exercisesCompleted };
+
+        const newAchievements = achievements.filter(achievement =>
+            !unlockedAchievements.some(a => a.id === achievement.id) && achievement.condition(newStats)
+        );
+
+        if (newAchievements.length > 0) {
+            const updatedAchievements = [...unlockedAchievements, ...newAchievements];
+            setUnlockedAchievements(updatedAchievements);
+            localStorage.setItem('achievements', JSON.stringify(updatedAchievements));
+
+            newAchievements.forEach(achievement => {
+                toast.success(`Поздравляем! Вы разблокировали достижение "${achievement.name}"!`);
+            });
+        }
+
+
+    }, [stats, unlockedAchievements]);
 
     return (
         <div className="bg-zinc-800 p-6 rounded-lg shadow-lg">

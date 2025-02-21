@@ -1,4 +1,4 @@
-import React, {Suspense, useEffect, useState} from 'react';
+import React, {Suspense} from 'react';
 import NightSky from "./NightSky.jsx";
 import EnergyParticles from "./EnergyParticles.jsx";
 import YungGravy from "./YungGravy.jsx";
@@ -36,25 +36,19 @@ export function useAnimation(group, path = '/models/brooklyn.fbx', name = 'brook
     return actions;
 }
 
-const CharacterElement = () => {
-    const [boughtCharacters, setBoughtCharacters] = useState([]);
-    useEffect(() => {
-        const storedCharacters = JSON.parse(localStorage.getItem('purchasedCharacters')) || [];
-        setBoughtCharacters(storedCharacters);
-    }, []);
-
+const CharacterElement = ({boughtCharacters}) => {
 
     return (
-        <Canvas shadows className={'border-2 border-fuchsia-500 rounded-lg'}>
+        <Canvas shadows className={'sm:border-2 sm:border-fuchsia-500 rounded-lg'}>
             <NightSky/>
-            <EnergyParticles count={500} radius={6}/>
+            <EnergyParticles count={1000} radius={7} depth={5}/>
             <directionalLight
                 position={[10, 10, 10]}
                 intensity={10}
                 castShadow
                 shadow-mapSize-width={1024}
                 shadow-mapSize-height={1024}
-                color="#800080"       // Фиолетовый цвет
+                color="#800080"
 
             />
             <directionalLight
@@ -63,7 +57,7 @@ const CharacterElement = () => {
                 castShadow
                 shadow-mapSize-width={1024}
                 shadow-mapSize-height={1024}
-                color="#800080"       // Фиолетовый цвет
+                color="#800080"
             />
             <directionalLight
                 position={[0, 5, 5]}

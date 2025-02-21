@@ -8,8 +8,7 @@ const Home = () => {
     const [showH1, setShowH1] = useState(false);
     const [showButton, setShowButton] = useState(false);
     const [showForm, setShowForm] = useState(false);
-    const [height, setHeight] = useState('');
-    const [weight, setWeight] = useState('');
+
     const navigate = useNavigate();
     useEffect(() => {
         const timer1 = setTimeout(() => setShowH2(true), 1000);
@@ -47,8 +46,7 @@ const Home = () => {
                         <button onClick={() => setShowForm(true)}
                                 className={` px-6 hover:bg-white hover:text-black py-4 bg-black border-2 border-white text-white text-3xl cursor-pointer transition-all duration-500 ${showButton ? 'opacity-100' : 'opacity-0'} `}>Начать</button>
                     ) : (
-                        <HomeForm onSubmit={handleSubmit} value={height} onChange={(e) => setHeight(e.target.value)}
-                                  value1={weight} onChange1={(e) => setWeight(e.target.value)}/>
+                        <HomeForm onSubmit={handleSubmit}/>
                     )}
                 </div>
             </div>

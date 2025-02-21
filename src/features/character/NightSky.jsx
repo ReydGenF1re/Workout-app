@@ -5,7 +5,7 @@ const NightSky = () => (
     <>
         <color attach="background" args={['#000008']} />
         <Stars
-            radius={100}
+            radius={ 100}
             depth={50}
             count={5000}
             factor={10}

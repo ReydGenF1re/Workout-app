@@ -7,8 +7,19 @@ const YungGravyFat = ({animationName = 'brooklynAnimation', ...props}) => {
     const {nodes, materials} = useGLTF('/models/YungGravyFAT.glb')
     const group = useRef();
     const actions = useAnimation(group);
+
     useEffect(() => {
-        return animationEffect(actions, animationName);
+        let isMounted = true;
+
+        if (actions) {
+            (async () => {
+                await animationEffect(actions, animationName);
+            })();
+        }
+
+        return () => {
+            isMounted = false;
+        };
     }, [animationName, actions]);
 
     return (

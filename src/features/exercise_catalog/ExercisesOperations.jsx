@@ -28,17 +28,6 @@ const ExercisesOperations = () => {
                     <option value="3">Сложная</option>
                 </select>
                 <EquipmentSelector isSelect={true} onChange={(e) => onSort('equipment', e.target.value)} />
-                {/*<select*/}
-                {/*    className="p-2 border-2 rounded-md bg-black border-gray-500"*/}
-                {/*    onChange={(e) => onSort('equipment', e.target.value)}*/}
-                {/*>*/}
-                {/*    <option value="">Оборудование</option>*/}
-                {/*    <option value="Не требуется">Без оборудования</option>*/}
-                {/*    <option value="Гантели">Гантели</option>*/}
-                {/*    <option value="Штанга">Штанга</option>*/}
-                {/*    <option value="Турник">Турник</option>*/}
-                {/*    <option value="Скамья">Скамья</option>*/}
-                {/*</select>*/}
             </div>
         </div>
     );

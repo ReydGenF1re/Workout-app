@@ -1,6 +1,6 @@
-import React, {useMemo} from "react";
+import React, { useMemo } from "react";
 
-const EnergyParticles = ({ count, radius }) => {
+const EnergyParticles = ({ count, radius, depth }) => {
     const particles = useMemo(() => {
         const temp = [];
         for (let i = 0; i < count; i++) {
@@ -8,10 +8,11 @@ const EnergyParticles = ({ count, radius }) => {
             const r = Math.sqrt(Math.random()) * radius;
             const x = r * Math.cos(theta);
             const z = r * Math.sin(theta);
-            temp.push({ x, y: (Math.random() - 0.5) * 2, z });
+            const y = Math.random() * depth - depth / 2;
+            temp.push({ x, y, z });
         }
         return temp;
-    }, [count, radius]);
+    }, [count, radius, depth]);
 
     return (
         <group>
@@ -24,4 +25,5 @@ const EnergyParticles = ({ count, radius }) => {
         </group>
     );
 };
+
 export default EnergyParticles;

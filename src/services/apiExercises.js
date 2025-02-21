@@ -137,5 +137,143 @@ export const predefinedWorkouts = [
                 "weight": null
             }
         ]
+    },
+    {
+        "name": "Тренировка спины",
+        "exercises": [
+            {
+                "id": 3,
+                "name": "Подтягивания",
+                "description": "Упражнение для укрепления спины и рук. Повисните на перекладине, ладони от себя. Подтяните тело вверх, пока подбородок не окажется над перекладиной, затем медленно опуститесь.",
+                "muscleGroup": [
+                    "Спина",
+                    "Бицепсы",
+                    "Плечи"
+                ],
+                "difficulty": 3,
+                "equipment": [
+                    "Турник"
+                ],
+                "image": "https://images.techinsider.ru/upload/img_cache/eb0/eb016c03bc80f92f1d8b5cb8f703ceb6_ce_1620x1080x156x0.jpg",
+                "type": "reps",
+                "reps": 15,
+                "time": null,
+                "weight": null
+            },
+            {
+                "id": 4,
+                "name": "Планка",
+                "description": "Статическое упражнение для укрепления корпуса. Примите положение упора лежа на локтях, тело прямое. Удерживайте эту позицию, напрягая мышцы живота и спины.",
+                "muscleGroup": [
+                    "Пресс",
+                    "Спина",
+                    "Плечи"
+                ],
+                "difficulty": 2,
+                "equipment": [
+                    "Коврик"
+                ],
+                "image": "https://atlet-sport.com/image/cache/catalog/stati/planka/uzkaja-800x600.jpg",
+                "type": "time",
+                "reps": null,
+                "time": 50,
+                "weight": null
+            },
+            {
+                "id": 7,
+                "name": "Становая тяга",
+                "description": "Комплексное упражнение для всего тела. Наклонитесь и возьмите штангу, выпрямляя ноги и спину, поднимите штангу до уровня бедер, затем опустите обратно на пол.",
+                "muscleGroup": [
+                    "Спина",
+                    "Ноги",
+                    "Ягодицы"
+                ],
+                "difficulty": 3,
+                "equipment": [
+                    "Штанга"
+                ],
+                "image": "https://musclefit.info/wp-content/uploads/2020/04/stanovaya-tyaga-sumo-min.jpg",
+                "type": "weight",
+                "reps": null,
+                "time": null,
+                "weight": 47
+            },
+            {
+                "id": 11,
+                "name": "Тяга штанги в наклоне",
+                "description": "Упражнение для укрепления спины. Наклонитесь вперед, держа штангу в вытянутых руках. Подтяните штангу к животу, сводя лопатки, затем опустите.",
+                "muscleGroup": [
+                    "Спина"
+                ],
+                "difficulty": 2,
+                "equipment": [
+                    "Штанга"
+                ],
+                "image": "https://musclefit.info/wp-content/uploads/2020/05/tyaga-shtangi-v-naklone.jpg",
+                "type": "weight",
+                "reps": null,
+                "time": null,
+                "weight": 44
+            }
+        ]
+    },
+    {
+        "name": "Тренируем руки",
+        "exercises": [
+            {
+                "id": 3,
+                "name": "Подтягивания",
+                "description": "Упражнение для укрепления спины и рук. Повисните на перекладине, ладони от себя. Подтяните тело вверх, пока подбородок не окажется над перекладиной, затем медленно опуститесь.",
+                "muscleGroup": [
+                    "Спина",
+                    "Бицепсы",
+                    "Плечи"
+                ],
+                "difficulty": 3,
+                "equipment": [
+                    "Турник"
+                ],
+                "image": "https://images.techinsider.ru/upload/img_cache/eb0/eb016c03bc80f92f1d8b5cb8f703ceb6_ce_1620x1080x156x0.jpg",
+                "type": "reps",
+                "reps": 16,
+                "time": null,
+                "weight": null
+            },
+            {
+                "id": 9,
+                "name": "Подъем гантелей на бицепс",
+                "description": "Изолированное упражнение для бицепсов. Стоя, держите гантели в опущенных руках. Поочередно сгибайте руки, поднимая гантели к плечам, затем опускайте.",
+                "muscleGroup": [
+                    "Бицепсы"
+                ],
+                "difficulty": 1,
+                "equipment": [
+                    "Гантели"
+                ],
+                "image": "https://sportmenu.com/uploads/store/Texts/Text543/cc391f.jpg",
+                "type": "weight",
+                "reps": null,
+                "time": null,
+                "weight": 44
+            },
+            {
+                "id": 13,
+                "name": "Французский жим",
+                "description": "Изолированное упражнение для трицепсов. Лежа на скамье, держите гантель над головой. Согните локти, опуская гантель за голову, затем выпрямите руки.",
+                "muscleGroup": [
+                    "Трицепсы"
+                ],
+                "difficulty": 2,
+                "equipment": [
+                    "Гантель",
+                    "Скамья"
+                ],
+                "image": "https://s0.rbk.ru/v6_top_pics/media/img/1/61/346981746361611.jpeg",
+                "type": "weight",
+                "reps": null,
+                "time": null,
+                "weight": 26
+            }
+        ]
     }
-];
+]
