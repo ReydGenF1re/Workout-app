@@ -6,7 +6,18 @@
   <!-- GitLab Pages handling for React Router -->
 
   <script type="text/javascript">
-    window.location.replace("/");
+    var l = window.location;
+    var pathname = l.pathname;
+    var rootUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/';
+    if (!pathname.startsWith('/?redirect=')) {
+      window.location.replace(rootUrl + '?redirect=' + encodeURIComponent(pathname + l.search + l.hash));
+    } else {
+      var params = new URLSearchParams(l.search);
+      var redirectPath = params.get('redirect');
+      if (redirectPath) {
+        window.history.replaceState(null, null, decodeURIComponent(redirectPath));
+      }
+    }
   </script>
 </head>
 <body>
