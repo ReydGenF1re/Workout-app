@@ -20,13 +20,22 @@ export function remapAnimationTracks(animation) {
 }
 
 export function animationEffect(actions, animationName) {
-    if (actions[animationName]) {
+    if (actions && actions[animationName]) {
         actions[animationName].reset().fadeIn(0.5).play();
-        return () => actions[animationName].fadeOut(0.5);
+        return () => {
+            setTimeout(() => {
+                if (actions[animationName]) {
+                    actions[animationName].fadeOut(0.5);
+                } else {
+                    console.warn(`fadeOut for "${animationName}" not found`);
+                }
+            }, 500); // Задержка перед fadeOut
+        };
     } else {
         console.warn(`Animation "${animationName}" not found`);
     }
 }
+
 
 export function useAnimation(group, path = '/models/brooklyn.fbx', name = 'brooklynAnimation') {
     const {animations} = useFBX(path);
