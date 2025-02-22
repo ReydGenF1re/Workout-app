@@ -8,7 +8,6 @@ const AudioPlayer = ({ defaultAudioFile = null, autoplay = false }) => {
     const [duration, setDuration] = useState(0);
     const audioRef = useRef(null);
 
-
     useEffect(() => {
         if (defaultAudioFile) {
             setAudioFile(defaultAudioFile);
@@ -89,7 +88,7 @@ const AudioPlayer = ({ defaultAudioFile = null, autoplay = false }) => {
     return (
         <div className="bg-zinc-900  rounded-lg shadow-lg  text-center w-full text-white py-4">
             <div className="mt-4">
-                 <input
+                <input
                     type="file"
                     accept="audio/*"
                     onChange={handleFileChange}

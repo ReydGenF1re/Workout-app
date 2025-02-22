@@ -13,6 +13,7 @@ import {Toaster} from "react-hot-toast";
 import {setAllWorkouts, setExercises} from "./features/builder/builderSlice.js";
 import {useDispatch} from "react-redux";
 import {predefinedWorkouts} from "./services/apiExercises.js";
+import ErrorBoundary from "./ui/ErrorBoundary.jsx";
 
 const router = createHashRouter([
     {
@@ -86,7 +87,9 @@ const App = () => {
                              padding: '16px 24px'
                          }
                      }}/>
-            <RouterProvider router={router} fallbackElement={<Loader/>}/>
+            <ErrorBoundary>
+                <RouterProvider router={router} fallbackElement={<Loader/>}/>
+            </ErrorBoundary>
 
         </>
     );

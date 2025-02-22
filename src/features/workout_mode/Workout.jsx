@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {useSelector} from 'react-redux';
+import React, { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import Button from '../../ui/Button.jsx';
 import WorkoutSummary from './WorkoutSummary.jsx';
 import AudioPlayer from "../../ui/AudioPlayer.jsx";
@@ -13,11 +13,15 @@ const Workout = () => {
     const [isWorkoutCompleted, setIsWorkoutCompleted] = useState(false);
     const defaultAudioFile = '/music/training.mp3';
 
+    // Использование рефов для управления аудио
+    const audioRef = useRef(null);
+
     // Эффект для создания события загрузки аудио при монтировании
     useEffect(() => {
-        const audioEvent = new Event('audioLoad');
-        audioEvent.audioPath = defaultAudioFile;
-        window.dispatchEvent(audioEvent);
+        if (audioRef.current) {
+            audioRef.current.src = defaultAudioFile;
+            if (autoplay) audioRef.current.play();
+        }
     }, []);
 
     const [workoutStats, setWorkoutStats] = useState({
@@ -70,7 +74,6 @@ const Workout = () => {
         }
         return () => clearInterval(interval);
     }, [isResting, currentExercise]);
-
 
     const startNextExercise = () => {
         setWorkoutStats(prevStats => ({
@@ -148,8 +151,7 @@ const Workout = () => {
                 <p className="text-2xl text-center">Тренировка завершена!</p>
             )}
             <div className="mt-2">
-                <AudioPlayer defaultAudioFile={defaultAudioFile}
-                             autoplay={true}/>
+                <AudioPlayer defaultAudioFile={defaultAudioFile} ref={audioRef} autoplay={true}/>
             </div>
         </div>
     );
