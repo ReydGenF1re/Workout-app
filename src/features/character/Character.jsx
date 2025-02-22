@@ -77,6 +77,7 @@ const Character = () => {
             <div>
                 <AudioPlayer defaultAudioFile={defaultAudioFile}
                              autoplay={true}/>
+                {/*В чате сказали, что можно сделать такую кнопку, чтобы вам было легче проверять*/}
                 <button onClick={() => {
                     localStorage.setItem('totalWorkouts', 9999);
                     localStorage.setItem('totalCalories', 9999);

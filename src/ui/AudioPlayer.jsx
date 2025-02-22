@@ -7,6 +7,8 @@ const AudioPlayer = ({ defaultAudioFile = null, autoplay = false }) => {
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
     const audioRef = useRef(null);
+
+
     useEffect(() => {
         if (defaultAudioFile) {
             setAudioFile(defaultAudioFile);
@@ -101,6 +103,7 @@ const AudioPlayer = ({ defaultAudioFile = null, autoplay = false }) => {
                             onTimeUpdate={handleTimeUpdate}
                             onLoadedMetadata={handleDurationChange}
                             className="hidden"
+                            loop
                         >
                             <source src={audioFile} type="audio/mpeg" />
                             Your browser does not support the audio element.
