@@ -14,11 +14,21 @@ const AudioPlayer = ({ defaultAudioFile = null, autoplay = false }) => {
             if (audioRef.current) {
                 audioRef.current.load();
                 if (autoplay) {
-                    audioRef.current.play().then(() => setIsPlaying(true));
+                    (async () => {
+                        try {
+                            await audioRef.current.play();
+                            setIsPlaying(true);
+                        } catch (error) {
+                            if (error.name !== 'AbortError') {
+                                console.error(error);
+                            }
+                        }
+                    })();
                 }
             }
         }
     }, [defaultAudioFile, autoplay]);
+
     useEffect(() => {
         const handleDefaultAudio = (event) => {
             if (event.audioPath) {
@@ -26,7 +36,16 @@ const AudioPlayer = ({ defaultAudioFile = null, autoplay = false }) => {
                 if (audioRef.current) {
                     audioRef.current.load();
                     if (autoplay) {
-                        audioRef.current.play().then(() => setIsPlaying(true));
+                        (async () => {
+                            try {
+                                await audioRef.current.play();
+                                setIsPlaying(true);
+                            } catch (error) {
+                                if (error.name !== 'AbortError') {
+                                    console.error(error);
+                                }
+                            }
+                        })();
                     }
                 }
             }
@@ -45,11 +64,17 @@ const AudioPlayer = ({ defaultAudioFile = null, autoplay = false }) => {
         }
     }, [isPlaying]);
 
-    const togglePlayPause = () => {
+    const togglePlayPause = async () => {
         if (isPlaying) {
-            audioRef?.current?.pause();
+            audioRef.current.pause();
         } else {
-            audioRef?.current?.play();
+            try {
+                await audioRef.current.play();
+            } catch (error) {
+                if (error.name !== 'AbortError') {
+                    console.error(error);
+                }
+            }
         }
         setIsPlaying(!isPlaying);
     };
