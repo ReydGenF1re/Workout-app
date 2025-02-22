@@ -36,7 +36,7 @@ const Header = () => {
                     <ul className="flex flex-col text-xl gap-6">
                         <li><NavLink className="nav-link block py-2 px-6" to="/public/exercises" onClick={toggleSidebar}>Упражнения</NavLink></li>
                         <li><NavLink className="nav-link block py-2 px-6" to="/builder" onClick={toggleSidebar}>Тренировки</NavLink></li>
-                        <li><NavLink className="nav-link block py-2 px-6" to="/character" onClick={toggleSidebar}>Бобрище</NavLink></li>
+                        <li><NavLink className="nav-link block py-2 px-6" to="/character" onClick={toggleSidebar}>Персонаж</NavLink></li>
                     </ul>
                 </nav>
             </div>

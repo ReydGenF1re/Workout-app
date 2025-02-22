@@ -5,7 +5,6 @@ import {achievements} from "../../services/achievements.js";
 
 const WorkoutSummary = ({ stats }) => {
     const SCORE_MULTIPLIER = 10;
-    console.log('WorkoutSummary render, получены stats:', stats);
 
     // Сразу при рендере сохраняем прогресс
     const saveProgress = () => {
@@ -28,13 +27,6 @@ const WorkoutSummary = ({ stats }) => {
         localStorage.setItem('totalTime', JSON.stringify(newTime));
         localStorage.setItem('totalWorkouts', JSON.stringify(newWorkouts));
         localStorage.setItem('score', JSON.stringify(newScore));
-
-        console.log('Сохранены новые значения:', {
-            totalCalories: newCalories,
-            totalTime: newTime,
-            totalWorkouts: newWorkouts,
-            score: newScore
-        });
 
         // Проверяем достижения
         const savedAchievements = localStorage.getItem('achievements');
@@ -64,7 +56,6 @@ const WorkoutSummary = ({ stats }) => {
 
     // Вызываем функцию сохранения сразу при рендере
     if (stats.caloriesBurned > 0) {  // Проверяем, что тренировка была
-        console.log('Вызываем saveProgress');
         saveProgress();
     }
 

@@ -40,7 +40,6 @@ export const builderSlice = createSlice({
             state.workoutName = '';
         },
         deleteWorkout: (state, action) => {
-            console.log(action)
             state.allWorkouts = state.allWorkouts.filter(workout => workout.name !== action.payload.name);
             localStorage.setItem('workouts', JSON.stringify(state.allWorkouts));
         },
