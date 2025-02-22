@@ -87,12 +87,12 @@ const AudioPlayer = ({ defaultAudioFile = null, autoplay = false }) => {
     return (
         <div className="bg-zinc-900  rounded-lg shadow-lg  text-center w-full text-white py-4">
             <div className="mt-4">
-                {!defaultAudioFile && <input
+                 <input
                     type="file"
                     accept="audio/*"
                     onChange={handleFileChange}
                     className="text-gray-400 mb-4"
-                />}
+                />
 
                 {audioFile && (
                     <div className="custom-audio-player">
