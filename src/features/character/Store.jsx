@@ -8,6 +8,7 @@ const Store = ({onBuyCharacter}) => {
 
     const characters = [
         {id: 1, name: 'BBNO$', cost: 5000, available: true},
+        {id: 2, name: 'Eminem', cost: 10000, available: true},
     ];
 
     useEffect(() => {

@@ -22,7 +22,7 @@
 
 ## Установка и запуск
 
-1. Клонируйте репозиторий:https://gitlab.prodcontest.ru/2025-final-projects-frontend/ReydGenF1re.git
+1. Клонируйте репозиторий:https://github.com/ReydGenF1re/Workout-app.git
 2. Установите зависимости: npm install
 3. Запустите приложение: npm start
 

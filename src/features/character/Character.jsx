@@ -77,16 +77,17 @@ const Character = () => {
             <div>
                 <AudioPlayer defaultAudioFile={defaultAudioFile}
                              autoplay={true}/>
-                {/*В чате сказали, что можно сделать такую кнопку, чтобы вам было легче проверять*/}
+
+                {/*For debug, why not ?) */}
                 <button onClick={() => {
                     localStorage.setItem('totalWorkouts', 9999);
                     localStorage.setItem('totalCalories', 9999);
                     localStorage.setItem('totalTime', 9999);
                     localStorage.setItem('score', 9999);
-                    localStorage.setItem('purchasedCharacters', JSON.stringify(['BBNO$']));
+                    localStorage.setItem('purchasedCharacters', JSON.stringify(['BBNO$', 'Eminem']));
                     localStorage.setItem('goal', 'Я ГИГАЧАД😎');
                     navigate(0)
-                }} className={'absolute bottom-4 right-4'}>Режим разработчика</button>
+                }} className={'absolute bottom-4 right-4'}>God mode</button>
             </div>
         </GoalProvider>
     );

@@ -9,6 +9,7 @@ import BabyNoMoneyFat from "./BabyNoMoneyFat.jsx";
 import YungGravyFat from "./YungGravyFat.jsx";
 import {useAnimations, useFBX} from "@react-three/drei";
 import CanvasLoader from "../../ui/CanvasLoader.jsx";
+import {Eminem} from "./Eminem.jsx";
 
 export function remapAnimationTracks(animation) {
     animation.tracks = animation.tracks.map(track => {
@@ -20,22 +21,13 @@ export function remapAnimationTracks(animation) {
 }
 
 export function animationEffect(actions, animationName) {
-    if (actions && actions[animationName]) {
+    if (actions[animationName]) {
         actions[animationName].reset().fadeIn(0.5).play();
-        return () => {
-            setTimeout(() => {
-                if (actions[animationName]) {
-                    actions[animationName].fadeOut(0.5);
-                } else {
-                    console.warn(`fadeOut for "${animationName}" not found`);
-                }
-            }, 500); // Задержка перед fadeOut
-        };
+        return () => actions[animationName].fadeOut(0.5);
     } else {
         console.warn(`Animation "${animationName}" not found`);
     }
 }
-
 
 export function useAnimation(group, path = '/models/brooklyn.fbx', name = 'brooklynAnimation') {
     const {animations} = useFBX(path);
@@ -88,21 +80,23 @@ const CharacterElement = ({boughtCharacters}) => {
             <Suspense fallback={<CanvasLoader/>}>
                 {localStorage.getItem("totalWorkouts") < 40 && (
                     <>
-                        <YungGravyFat scale={3} position-y={-3} position-z={2}/>
+                        <YungGravyFat scale={3.4} position-y={-3} position-x={0} position-z={3} />
                     </>
                 )}
                 {localStorage.getItem("totalWorkouts") >= 40 && (
                     <>
-                        <YungGravy scale={3} position-y={-3} position-z={2}/>
+                        <YungGravy scale={3.2} position-y={-3} position-x={0} position-z={3} />
                     </>
                 )}
                 {boughtCharacters.includes('BBNO$') && localStorage.getItem("totalWorkouts") >= 80 && (
-                    <BabyNoMoney position-y={-3} scale={3} position-z={-2} animationName="SwingDancing" />
+                    <BabyNoMoney position-y={-3} scale={2.7} position-x={4} position-z={-1} animationName="SwingDancing" />
                 )}
                 {boughtCharacters.includes('BBNO$') && localStorage.getItem("totalWorkouts") < 80 && (
-                    <BabyNoMoneyFat position-y={-3} scale={3} position-z={-2} animationName="SwingDancing" />
+                    <BabyNoMoneyFat position-y={-3} scale={2.7} position-x={4} position-z={-1} animationName="SwingDancing" />
                 )}
-
+                {boughtCharacters.includes('Eminem') && (
+                    <Eminem position-y={-2} scale={2.7} position-x={-4} position-z={-1} animationName="Flair" />
+                )}
 
             </Suspense>
         </Canvas>
